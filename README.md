@@ -1,1 +1,1 @@
-# Ej2_FRONTEND_admin
+# Ej2_FRONTEND_ecommerce
