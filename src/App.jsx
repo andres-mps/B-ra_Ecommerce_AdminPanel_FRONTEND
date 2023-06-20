@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import Products from "./pages/Products";
 import Product_Edition from "./pages/Product_Edition";
 import Users from "./pages/Users";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/product-edition" element={<Product_Edition />} />
         <Route path="/products/edit/:product" element={<Product_Edition />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </>
   );

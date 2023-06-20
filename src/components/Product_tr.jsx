@@ -2,7 +2,6 @@ import React from "react";
 import "./Product_tr.css";
 import { enUS } from "date-fns/locale";
 import { format } from "date-fns";
-
 import { NavLink } from "react-router-dom";
 
 function Product_tr({ product }) {
@@ -21,9 +20,9 @@ function Product_tr({ product }) {
       <td>{product.category.name}</td>
       <td>{product.category.id}</td>
       <td>{product.featured ? "True" : "False"}</td>
-      <td className="collapsible-cell text-start">
+      {/* <td className="collapsible-cell text-start">
         <span className="collapsible-content">{product.description}</span>
-      </td>
+      </td> */}
       <td>{product.active ? "True" : "False"} </td>
       <td> {format(new Date(product.createdAt), "dd MMM yy", { locale: enUS })}</td>
       <td> {format(new Date(product.updatedAt), "dd MMM yy", { locale: enUS })}</td>

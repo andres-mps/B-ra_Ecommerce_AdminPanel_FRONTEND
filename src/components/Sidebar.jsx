@@ -33,7 +33,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="#"
+            to="/orders"
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white px-0 align-middle"
           >

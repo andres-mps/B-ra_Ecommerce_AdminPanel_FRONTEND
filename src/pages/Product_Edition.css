@@ -1,14 +1,21 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.page-wrap {
+  max-width: 100vw;
+  height: 100vh;
+  background-color: rgb(243 244 246);
 }
 
-.table-container {
-  margin-top: 40px;
-  width: fit-content;
-  height: 100vh;
+.content-container {
+  margin: 4rem;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.product-title {
+  font-size: 1.6rem;
+}
+
 .product-img-container {
   position: relative;
   max-width: 100px;
