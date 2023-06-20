@@ -15,7 +15,11 @@ function Sidebar() {
         to="/"
         className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <img src="/public/tool_horizontal_logo_19.png" alt="Logo" style={{ maxWidth: "90px" }} />
+        <img
+          src="/public/tool_horizontal_logo_19.png"
+          alt="Logo"
+          style={{ maxWidth: "90px" }}
+        />
       </NavLink>
       <ul
         className="nav nav-pills flex-column mb-sm-auto mb-5 align-items-center align-items-sm-start"
@@ -50,6 +54,16 @@ function Sidebar() {
           >
             <i className="me-2 fs-4 bi-grid"></i>
             <span className="ms-1 d-none d-sm-inline">Products</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/categories"
+            data-bs-toggle="collapse"
+            className=" text-decoration-none text-white px-0 align-middle"
+          >
+            <i className="me-2 fs-4 bi-list"></i>
+            <span className="ms-1 d-none d-sm-inline">Categories</span>
           </NavLink>
         </li>
         <li>
