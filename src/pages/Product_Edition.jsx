@@ -13,7 +13,16 @@ const onChange = (checked) => {
 function Product_Edition() {
   const [product, setProduct] = useState([]);
   const params = useParams();
-  console.log(params.product);
+
+  // inputs:
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(null);
+  const [stock, setStock] = useState(null);
+  const [size, setSize] = useState("");
+  const [abv, setAbv] = useState("");
+  const [catId, setCatId] = useState(null);
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     async function getProductInfo() {
@@ -39,7 +48,7 @@ function Product_Edition() {
           </div>
           <div className="col-11 col-md-9 col-xl-10 ">
             <div className="content-container">
-              <h1 className=" title">{product.name} </h1>
+              <h1 className="title">{product.name} </h1>
               <form className="row g-3 ">
                 <div className="col-md-1">
                   <label htmlFor="id" className="form-label">
@@ -56,14 +65,15 @@ function Product_Edition() {
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="inputEmail4" className="form-label">
+                  <label htmlFor="name" className="form-label">
                     Name
                   </label>
                   <input
-                    type="email"
+                    type="name"
                     className="form-control"
-                    value={product.name}
-                    id="inputEmail4"
+                    onChange={(event) => setName(event.target.value)}
+                    value={name}
+                    id="name"
                   />
                 </div>
 
@@ -84,80 +94,80 @@ function Product_Edition() {
                 </div>
 
                 <div className="col-4 col-md-2">
-                  <label htmlFor="id" className="form-label mt-3">
+                  <label htmlFor="price" className="form-label mt-3">
                     Price
                   </label>
                   <input
                     type="number"
                     className="form-control"
-                    id="id"
-                    value={product.price}
-                    placeholder="20,50"
+                    id="price"
+                    onChange={(event) => setPrice(event.target.value)}
+                    value={price}
                   />
                 </div>
                 <div className="col-4 col-md-2">
-                  <label htmlFor="id" className="form-label  mt-3">
+                  <label htmlFor="stock" className="form-label  mt-3">
                     Stock
                   </label>
                   <input
                     type="number"
                     className={`form-control ${product.stock === 0 ? "text-danger bg-light" : ""}`}
-                    id="id"
-                    value={product.stock}
-                    placeholder="2"
+                    id="stock"
+                    onChange={(event) => setStock(event.target.value)}
+                    value={stock}
                   />
                 </div>
                 <div className="col-4 col-md-2">
-                  <label htmlFor="id" className="form-label  mt-3">
+                  <label htmlFor="size" className="form-label  mt-3">
                     Size
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="id"
-                    value={product.size}
-                    placeholder="2"
+                    id="size"
+                    onChange={(event) => setSize(event.target.value)}
+                    value={size}
                   />
                 </div>
                 <div className="col-4 col-md-2">
-                  <label htmlFor="id" className="form-label  mt-3">
+                  <label htmlFor="abv" className="form-label  mt-3">
                     ABV
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="id"
-                    value={product.abv}
-                    placeholder="5.7%"
+                    id="abv"
+                    onChange={(event) => setAbv(event.target.value)}
+                    value={abv}
                   />
                 </div>
 
                 <div className="col-4 col-md-1">
-                  <label htmlFor="id" className="form-label mt-3">
+                  <label htmlFor="catId" className="form-label mt-3">
                     Cat Id
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="id"
-                    // value={product.category.id}
-                    placeholder="2"
+                    id="catId"
+                    onChange={(event) => setCatId(event.target.value)}
+                    value={catId}
                   />
                 </div>
                 <div className="col-4 col-md-1">
-                  <label htmlFor="id" className="form-label mt-3">
+                  <label htmlFor="category" className="form-label mt-3">
                     Category
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="id"
-                    // value={product.category.name}
-                    placeholder="2"
+                    id="category"
+                    onChange={(event) => setCategery(event.target.value)}
+                    value={category}
                   />
                 </div>
                 <div className="col-6 col-md-1 d-flex justify-content-between flex-column align-items-center ">
-                  <label htmlFor="id" className="form-label mt-3">
+                  <label htmlFor="featured" className="form-label mt-3">
                     Featured
                   </label>
                   <Switch size="small" defaultChecked={product.featured} onChange={onChange} />
@@ -177,9 +187,9 @@ function Product_Edition() {
                     class="form-control"
                     id="text"
                     name="content"
-                    placeholder="This is an imperial stout with eight different types of malt that pushes all the boundaries - a little bit sweet, a little bit smoky, a little roasty, and a lot of chocolate with added roasted orange peel and cardamom."
                     rows="3"
-                    value={product.description}
+                    onChange={(event) => setDescription(event.target.value)}
+                    value={description}
                   ></textarea>
                 </div>
 

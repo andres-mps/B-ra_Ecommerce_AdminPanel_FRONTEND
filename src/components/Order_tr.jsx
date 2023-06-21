@@ -7,8 +7,9 @@ import { NavLink } from "react-router-dom";
 function Order_tr({ order }) {
   return (
     <tr className="table-row">
-      <td>
-        {order.user.firstname} {order.user.lastname} (<small>{order.user.email}</small>)
+      <td className="opacity-100">
+        {order.user.firstname} {order.user.lastname} (
+        <small className="opacity-75">{order.user.email}</small>)
       </td>
       {/* <td>{order.address}</td> */}
       <td>{order.status}</td>
@@ -16,9 +17,9 @@ function Order_tr({ order }) {
       {/* <td>{order.taxes}</td> */}
       <td>{order.totalAmount}</td>
       <td>{order.userId}</td>
-      <td className="collapsible-cell text-start">
-        {/* <span className="collapsible-content">{order.products}</span> */}
-      </td>
+      {/* <td className="collapsible-cell text-start"> */}
+      {/* <span className="collapsible-content">{order.products}</span> */}
+      {/* </td> */}
       <td> {format(new Date(order.createdAt), "dd MMM yy", { locale: enUS })}</td>
       <td> {format(new Date(order.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>

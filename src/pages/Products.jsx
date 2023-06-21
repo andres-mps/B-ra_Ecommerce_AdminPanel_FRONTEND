@@ -36,17 +36,12 @@ function Products() {
   }, []);
 
   return (
-    <div className="container-fluid  m-0 page-wrap">
+    <div className="container-fluid m-0 page-wrap">
       <div className="row">
         <div className="col-1 col-md-3 col-xl-2  bg-dark">
           <Sidebar />
         </div>
         <div className="col-11  col-md-9 col-xl-10 ">
-          {/* <div className="d-flex justify-content-end align-items-center">
-            <NavLink to="/products" className="btn btn-outline-primary me-5  mt-5">
-              Create Product
-            </NavLink>
-          </div> */}
           <div className="table-wrap">
             <table className="table table-hover caption-top">
               <caption className="title">Products</caption>

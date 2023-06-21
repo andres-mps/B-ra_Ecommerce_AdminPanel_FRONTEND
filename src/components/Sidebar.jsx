@@ -15,11 +15,7 @@ function Sidebar() {
         to="/"
         className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <img
-          src="/public/tool_horizontal_logo_19.png"
-          alt="Logo"
-          style={{ maxWidth: "90px" }}
-        />
+        <img src="/public/tool_horizontal_logo_19.png" alt="Logo" style={{ maxWidth: "90px" }} />
       </NavLink>
       <ul
         className="nav nav-pills flex-column mb-sm-auto mb-5 align-items-center align-items-sm-start"

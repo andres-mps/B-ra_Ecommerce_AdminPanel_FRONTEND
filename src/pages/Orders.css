@@ -1,5 +1,5 @@
-.page-wrap {
-  width: 100%;
+/* .page-wrap {
+  width: 100vw;
   overflow: scroll;
   background-color: rgb(243 244 246);
 }
@@ -25,4 +25,4 @@
 table th {
   background-color: rgb(243 244 246) !important;
   font-size: 0.9rem;
-}
+} */
