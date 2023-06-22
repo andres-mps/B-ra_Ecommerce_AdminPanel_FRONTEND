@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Categories.css";
 import Category_tr from "../components/Category_tr";
 import Sidebar from "../components/Sidebar";
-import Test from "../components/Test";
 
 function Categories() {
   const [categories, setCategories] = useState([]);

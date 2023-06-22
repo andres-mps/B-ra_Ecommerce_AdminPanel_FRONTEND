@@ -36,7 +36,7 @@ function Orders() {
               <caption className="title">Orders</caption>
               <thead>
                 <tr className="headers">
-                  <th scope="col">User</th>
+                  <th scope="col">User </th>
                   {/* <th scope="col">Address</th> */}
                   <th scope="col">Status</th>
                   {/* <th scope="col">SubtotalAmount</th> */}

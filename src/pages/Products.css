@@ -8,8 +8,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
+
+.create_btn {
+  align-self: self-end;
+  position: relative;
+  top: 2rem;
+  right: 2rem;
+  background-color: rgba(15, 25, 165, 0.877) !important;
+  color: white !important;
+}
+
+.create_btn:hover {
+  background-color: rgb(15, 25, 165) !important;
+}
+
 .sidebar-box {
   height: 100vh;
 }

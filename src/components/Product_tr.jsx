@@ -10,7 +10,7 @@ function Product_tr({ product }) {
       <td> {product.id}</td>
 
       <td className="thumbnail-container">
-        <img className="thumbnail-img" src={product.image} alt="" />
+        <img className="thumbnail-img" src={`http://localhost:3000/img/${product.image}`} alt="" />
       </td>
       <td className="text-start">{product.name}</td>
       <td>{product.price}</td>
@@ -18,7 +18,7 @@ function Product_tr({ product }) {
       <td>{product.abv}</td>
       <td>{product.stock}</td>
       <td>{product.category.name}</td>
-      <td>{product.category.id}</td>
+      <td>{product.categoryId}</td>
       <td>{product.featured ? "True" : "False"}</td>
       {/* <td className="collapsible-cell text-start">
         <span className="collapsible-content">{product.description}</span>
@@ -28,7 +28,7 @@ function Product_tr({ product }) {
       <td> {format(new Date(product.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/products/edit/${product.slug}`}>
-          <i class="bi bi-pencil-fill text-success pencil"></i>
+          <i class="bi bi-pencil-fill text-primary pencil"></i>
         </NavLink>
       </td>
     </tr>

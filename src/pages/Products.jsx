@@ -20,7 +20,7 @@ function Products() {
         // },
       });
       setProducts(response.data);
-      console.log(response.data);
+      // console.log(response.data);
 
       const categories = await axios({
         method: "GET",
@@ -30,7 +30,7 @@ function Products() {
         // },
       });
       setCategories(categories.data);
-      console.log(categories.data);
+      // console.log(categories.data);
     }
     getProductInfo();
   }, []);
@@ -43,6 +43,12 @@ function Products() {
         </div>
         <div className="col-11  col-md-9 col-xl-10 ">
           <div className="table-wrap">
+            <NavLink
+              to="/products/add"
+              className="btn create_btn shadow d-inline text-right opacity-75 sticky-top me-2  mt-3"
+            >
+              Add Product
+            </NavLink>
             <table className="table table-hover caption-top">
               <caption className="title">Products</caption>
               <thead>

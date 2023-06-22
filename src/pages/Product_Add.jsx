@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
-function Product_Edition() {
+function Product_Add() {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const params = useParams();
@@ -23,32 +23,6 @@ function Product_Edition() {
   const [active, setActive] = useState(null);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-
-  useEffect(() => {
-    async function getProductInfo() {
-      const response = await axios({
-        method: "GET",
-        url: `http://localhost:3000/products/${params.product}`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-      });
-      setProduct(response.data);
-      setId(response.data.id);
-      setName(response.data.name);
-      setPrice(response.data.price);
-      setStock(response.data.stock);
-      setSize(response.data.size);
-      setAbv(response.data.abv);
-      setCatId(response.data.categoryId);
-      setFeatured(response.data.featured);
-      setActive(response.data.active);
-      setDescription(response.data.description);
-
-      // console.log(response.data);
-    }
-    getProductInfo();
-  }, []);
 
   async function handleUpdate(event) {
     event.preventDefault();
@@ -69,8 +43,8 @@ function Product_Edition() {
     console.log(formData);
 
     await axios({
-      method: "PATCH",
-      url: `http://localhost:3000/products/${product.id}`,
+      method: "POST",
+      url: `http://localhost:3000/products`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -79,21 +53,6 @@ function Product_Edition() {
     });
     navigate(-1);
   }
-
-  const handleDelete = () => {
-    // e.preventDefault();
-    async function deleteProduct() {
-      await axios({
-        method: "DELETE",
-        url: `http://localhost:3000/products/${product.id}`,
-        headers: {
-          // Authorization: `Bearer ${token}`,
-        },
-      });
-    }
-    deleteProduct();
-    navigate("/products");
-  };
 
   const handleSwitchChange = (checked) => {
     setActive(checked);
@@ -213,15 +172,16 @@ function Product_Edition() {
                     value={abv}
                   />
                 </div>
-                <div className="col-4 col-md-2">
-                  <label htmlFor="catId" className="form-label  mt-3">
+
+                <div className="col-4 col-md-1">
+                  <label htmlFor="catId" className="form-label mt-3">
                     Cat Id
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="catId"
-                    onChange={(event) => setCatId(parseInt(event.target.value, 10))}
+                    onChange={(event) => setCatId(event.target.value)}
                     value={catId}
                   />
                 </div>
@@ -257,18 +217,13 @@ function Product_Edition() {
                   ></textarea>
                 </div>
 
-                <div className="d-flex flex-row justify-content-between">
-                  <div>
-                    <button onClick={handleDelete} className="btn btn-danger mt-3">
-                      Delete
-                    </button>
-                  </div>
+                <div className="d-flex flex-row justify-content-end">
                   <div>
                     <NavLink to="/products" className="btn btn-outline-secondary me-2  mt-3">
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
-                      Update
+                      Save
                     </button>
                   </div>
                 </div>
@@ -281,4 +236,4 @@ function Product_Edition() {
   );
 }
 
-export default Product_Edition;
+export default Product_Add;

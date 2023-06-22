@@ -5,6 +5,15 @@ import { format } from "date-fns";
 import { NavLink } from "react-router-dom";
 
 function Order_tr({ order }) {
+  function statusIcons() {
+    if (order.status === "pending") {
+      return <i className="bi bi-arrow-clockwise "></i>;
+    } else if (order.status === "in progress") {
+      return <i class="bi bi-box-arrow-right text-warning"></i>;
+    } else {
+      return <i class="bi bi-check-circle-fill text-success"></i>;
+    }
+  }
   return (
     <tr className="table-row">
       <td className="opacity-100">
@@ -12,7 +21,9 @@ function Order_tr({ order }) {
         <small className="opacity-75">{order.user.email}</small>)
       </td>
       {/* <td>{order.address}</td> */}
-      <td>{order.status}</td>
+      <td className="fs-7">
+        {statusIcons()} {order.status}
+      </td>
       {/* <td>{order.subTotalPrice}</td> */}
       {/* <td>{order.taxes}</td> */}
       <td>{order.totalAmount}</td>
@@ -24,7 +35,7 @@ function Order_tr({ order }) {
       <td> {format(new Date(order.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/orders/edit/${order.id}`}>
-          <i class="bi bi-pencil-fill text-success pencil"></i>
+          <i class="bi bi-pencil-fill text-primary pencil"></i>
         </NavLink>
       </td>
     </tr>
