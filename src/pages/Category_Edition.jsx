@@ -167,7 +167,7 @@ function Category_Edition() {
 
                   <div>
                     <NavLink
-                      to="/products"
+                      to="/categories"
                       className="btn btn-outline-secondary me-2  mt-3"
                     >
                       Cancel
