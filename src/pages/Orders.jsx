@@ -25,40 +25,42 @@ function Orders() {
   }, []);
 
   return (
-    <div className="container-fluid  m-0 page-wrap">
-      <div className="row">
-        <div className="col-1 col-md-3 col-xl-2  bg-dark">
-          <Sidebar />
-        </div>
-        <div className="col-11  col-md-9 col-xl-10 ">
-          <div className="table-wrap">
-            <table className="table table-hover caption-top">
-              <caption className="title">Orders</caption>
-              <thead>
-                <tr className="headers">
-                  <th scope="col">User </th>
-                  {/* <th scope="col">Address</th> */}
-                  <th scope="col">Status</th>
-                  {/* <th scope="col">SubtotalAmount</th> */}
-                  {/* <th scope="col">Taxes</th> */}
-                  <th scope="col">TotalAmount</th>
-                  <th scope="col">UserId</th>
-                  {/* <th scope="col">Products</th> */}
-                  <th scope="col">CreatedAt</th>
-                  <th scope="col">UpdatedAt</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders &&
-                  orders.map((order) => {
-                    return <Order_tr key={order.id} order={order} />;
-                  })}
-              </tbody>
-            </table>
+    orders && (
+      <div className="container-fluid  m-0 page-wrap">
+        <div className="row">
+          <div className="col-1 col-md-3 col-xl-2  bg-dark">
+            <Sidebar />
+          </div>
+          <div className="col-11  col-md-9 col-xl-10 ">
+            <div className="table-wrap">
+              <table className="table table-hover caption-top">
+                <caption className="title">Orders</caption>
+                <thead>
+                  <tr className="headers">
+                    <th scope="col">User </th>
+                    {/* <th scope="col">Address</th> */}
+                    <th scope="col">Status</th>
+                    {/* <th scope="col">SubtotalAmount</th> */}
+                    {/* <th scope="col">Taxes</th> */}
+                    <th scope="col">TotalAmount</th>
+                    <th scope="col">UserId</th>
+                    {/* <th scope="col">Products</th> */}
+                    <th scope="col">CreatedAt</th>
+                    <th scope="col">UpdatedAt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders &&
+                    orders.map((order) => {
+                      return <Order_tr key={order.id} order={order} />;
+                    })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    )
   );
 }
 

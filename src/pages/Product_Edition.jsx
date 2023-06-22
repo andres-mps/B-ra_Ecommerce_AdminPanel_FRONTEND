@@ -18,7 +18,7 @@ function Product_Edition() {
   const [stock, setStock] = useState(null);
   const [size, setSize] = useState("");
   const [abv, setAbv] = useState("");
-  const [catId, setCatId] = useState(0);
+  const [categoryId, setCategoryId] = useState(0);
   const [featured, setFeatured] = useState(null);
   const [active, setActive] = useState(null);
   const [description, setDescription] = useState("");
@@ -40,7 +40,7 @@ function Product_Edition() {
       setStock(response.data.stock);
       setSize(response.data.size);
       setAbv(response.data.abv);
-      setCatId(response.data.categoryId);
+      setCategoryId(response.data.categoryId);
       setFeatured(response.data.featured);
       setActive(response.data.active);
       setDescription(response.data.description);
@@ -60,7 +60,7 @@ function Product_Edition() {
       stock,
       size,
       abv,
-      catId,
+      categoryId,
       description,
       image,
       featured,
@@ -95,9 +95,9 @@ function Product_Edition() {
     navigate("/products");
   };
 
-  const handleSwitchChange = (checked) => {
-    setActive(checked);
-  };
+  // const handleSwitchChange = (checked) => {
+  //   setActive(checked);
+  // };
 
   return (
     product && (
@@ -214,15 +214,15 @@ function Product_Edition() {
                   />
                 </div>
                 <div className="col-4 col-md-2">
-                  <label htmlFor="catId" className="form-label  mt-3">
+                  <label htmlFor="categoryId" className="form-label  mt-3">
                     Cat Id
                   </label>
                   <input
                     type="number"
                     className="form-control"
-                    id="catId"
-                    onChange={(event) => setCatId(parseInt(event.target.value, 10))}
-                    value={catId}
+                    id="categoryId"
+                    onChange={(event) => setCategoryId(event.target.value)}
+                    value={categoryId}
                   />
                 </div>
 
@@ -230,17 +230,13 @@ function Product_Edition() {
                   <label htmlFor="featured" className="form-label mt-3">
                     Featured
                   </label>
-                  <Switch
-                    size="small"
-                    defaultChecked={product.featured}
-                    onChange={() => setFeatured(!product.featured)}
-                  />
+                  <Switch size="small" checked={featured} onChange={() => setFeatured(!featured)} />
                 </div>
                 <div className="col-6 col-md-1 d-flex justify-content-between flex-column align-items-center">
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={product.active} onChange={handleSwitchChange} />
+                  <Switch size="small" checked={active} onChange={() => setActive(!active)} />
                 </div>
 
                 <div className="col-md-12 ">

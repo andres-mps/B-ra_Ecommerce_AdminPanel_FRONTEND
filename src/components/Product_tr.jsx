@@ -5,6 +5,12 @@ import { format } from "date-fns";
 import { NavLink } from "react-router-dom";
 
 function Product_tr({ product }) {
+  function stockIcons() {
+    if (product.stock === 0) {
+      return <i class="bi bi-exclamation-triangle-fill text-danger"></i>;
+    }
+  }
+
   return (
     <tr className="table-row">
       <td> {product.id}</td>
@@ -16,10 +22,14 @@ function Product_tr({ product }) {
       <td>{product.price}</td>
       <td>{product.size}</td>
       <td>{product.abv}</td>
-      <td>{product.stock}</td>
+      <td>
+        {stockIcons()}
+        {"  "}
+        {product.stock}
+      </td>
       <td>{product.category.name}</td>
       <td>{product.categoryId}</td>
-      <td>{product.featured ? "True" : "False"}</td>
+      <td>{product.featured ? <i class="bi bi-star-fill text-warning "></i> : "-"}</td>
       {/* <td className="collapsible-cell text-start">
         <span className="collapsible-content">{product.description}</span>
       </td> */}
@@ -28,7 +38,7 @@ function Product_tr({ product }) {
       <td> {format(new Date(product.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/products/edit/${product.slug}`}>
-          <i class="bi bi-pencil-fill text-primary pencil"></i>
+          <i className="bi bi-pencil-fill text-primary pencil"></i>
         </NavLink>
       </td>
     </tr>

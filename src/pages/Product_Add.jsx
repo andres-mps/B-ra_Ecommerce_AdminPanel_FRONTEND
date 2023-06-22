@@ -18,7 +18,7 @@ function Product_Add() {
   const [stock, setStock] = useState(null);
   const [size, setSize] = useState("");
   const [abv, setAbv] = useState("");
-  const [catId, setCatId] = useState(0);
+  const [categoryId, setCategoryId] = useState(0);
   const [featured, setFeatured] = useState(null);
   const [active, setActive] = useState(null);
   const [description, setDescription] = useState("");
@@ -34,7 +34,7 @@ function Product_Add() {
       stock,
       size,
       abv,
-      catId,
+      categoryId,
       description,
       image,
       featured,
@@ -174,15 +174,15 @@ function Product_Add() {
                 </div>
 
                 <div className="col-4 col-md-1">
-                  <label htmlFor="catId" className="form-label mt-3">
+                  <label htmlFor="categoryId" className="form-label mt-3">
                     Cat Id
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="catId"
-                    onChange={(event) => setCatId(event.target.value)}
-                    value={catId}
+                    id="categoryId"
+                    onChange={(event) => setCategoryId(event.target.value)}
+                    value={categoryId}
                   />
                 </div>
 
