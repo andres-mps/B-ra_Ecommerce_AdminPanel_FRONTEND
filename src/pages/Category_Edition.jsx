@@ -1,7 +1,7 @@
 import React from "react";
 import "./Category_Edition.css";
 import { Switch } from "antd";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
@@ -11,24 +11,72 @@ const onChange = (checked) => {
 };
 
 function Category_Edition() {
+  const navigate = useNavigate();
   const [category, setCategory] = useState([]);
   const params = useParams();
-  console.log(params.category);
+
+  const [id, setId] = useState(null);
+  const [name, setName] = useState("");
+  const [active, setActive] = useState(null);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     async function getCategoryInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/categories/${params.category}`,
+        url: `http://localhost:3000/categories/admin/${params.category}`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
       });
       setCategory(response.data);
-      console.log(response.data);
+      setId(response.data.id);
+      setName(response.data.name);
+      setActive(response.data.active);
     }
     getCategoryInfo();
   }, []);
+
+  async function handleUpdate(event) {
+    event.preventDefault();
+
+    const formData = {
+      id,
+      name,
+      image,
+      active,
+    };
+    console.log(formData);
+
+    await axios({
+      method: "PATCH",
+      url: `http://localhost:3000/categories/admin/update/${category.id}`,
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        //   Authorization: `Bearer ${token}`,
+      },
+    });
+    navigate(-1);
+  }
+
+  const handleDelete = () => {
+    async function deleteCategory() {
+      await axios({
+        method: "DELETE",
+        url: `http://localhost:3000/categories/admin/${category.id}`,
+        headers: {
+          // Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+    deleteCategory();
+    navigate("/categories");
+  };
+
+  const handleSwitchChange = (checked) => {
+    setActive(checked);
+  };
 
   return (
     category && (
@@ -40,7 +88,12 @@ function Category_Edition() {
           <div className="col-11 col-md-9 col-xl-10 ">
             <div className="content-container">
               <h1 className=" title">{category.name} </h1>
-              <form className="row g-3 ">
+              <form
+                className="row g-3"
+                encType="multipart/form-data"
+                method="PATCH"
+                onSubmit={handleUpdate}
+              >
                 <div className="col-md-1">
                   <label htmlFor="id" className="form-label">
                     Id
@@ -56,14 +109,15 @@ function Category_Edition() {
                 </div>
 
                 <div className="col-md-6">
-                  <label htmlFor="inputEmail4" className="form-label">
+                  <label htmlFor="name" className="form-label">
                     Name
                   </label>
                   <input
-                    type="email"
+                    type="name"
                     className="form-control"
-                    value={category.name}
-                    id="inputEmail4"
+                    onChange={(event) => setName(event.target.value)}
+                    value={name}
+                    id="name"
                   />
                 </div>
 
@@ -71,40 +125,51 @@ function Category_Edition() {
                   <label for="formFileMultiple" className="form-label">
                     Upload product images:
                   </label>
-                  <input className="form-control" type="file" id="formFileMultiple" multiple />
+                  <input
+                    className="form-control"
+                    type="file"
+                    id="formFileMultiple"
+                    multiple
+                    onChange={(event) => setImage(event.target.files[0])}
+                  />
                 </div>
 
                 <div className="col-md-3  d-flex flex-row">
                   <div className="product-img-container">
-                    <img className="product-img" src={category.image} alt="" />
+                    <img
+                      className="product-img"
+                      src={`http://localhost:3000/img/${category.image}`}
+                      alt=""
+                    />
                   </div>
-                  <div className="product-img-container">
-                    <img className="product-img" src="/public/Beach-Side.webp" alt="" />
-                  </div>
-                </div>
-
-                <div className="col-md-1 d-flex justify-content-between flex-column align-items-center ">
-                  <label htmlFor="id" className="form-label mt-3">
-                    Featured
-                  </label>
-                  <Switch size="small" defaultChecked={category.featured} onChange={onChange} />
+                  <div className="product-img-container"></div>
                 </div>
                 <div className="col-md-1 d-flex justify-content-between flex-column align-items-center">
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" defaultChecked={category.active} onChange={onChange} />
+                  <Switch
+                    size="small"
+                    checked={active}
+                    onChange={handleSwitchChange}
+                  />
                 </div>
-
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button type="submit" className="btn btn-danger mt-3">
+                    <button
+                      onClick={handleDelete}
+                      type="submit"
+                      className="btn btn-danger mt-3"
+                    >
                       Delete
                     </button>
                   </div>
 
                   <div>
-                    <NavLink to="/products" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/products"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
