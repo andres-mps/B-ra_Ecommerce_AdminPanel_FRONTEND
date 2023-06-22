@@ -12,7 +12,7 @@ function Categories() {
     async function getCategoryInfo() {
       const categories = await axios({
         method: "GET",
-        url: `http://localhost:3000/categories`,
+        url: `http://localhost:3000/categories/admin/`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -47,7 +47,9 @@ function Categories() {
               <tbody>
                 {categories &&
                   categories.map((category) => {
-                    return <Category_tr key={category.id} category={category} />;
+                    return (
+                      <Category_tr key={category.id} category={category} />
+                    );
                   })}
               </tbody>
             </table>

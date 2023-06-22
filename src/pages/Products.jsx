@@ -14,7 +14,7 @@ function Products() {
     async function getProductInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/products`,
+        url: `http://localhost:3000/products/admin`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
