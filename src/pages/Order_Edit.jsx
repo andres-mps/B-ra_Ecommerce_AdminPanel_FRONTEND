@@ -58,12 +58,11 @@ function Order_edit() {
 
     await axios({
       method: "PATCH",
-      url: `http://localhost:3000/orders/order/${order.id}`,
+      url: `http://localhost:3000/orders/${order.id}`,
       data: orderInfo,
-      headers: {
-        "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
-      },
+      // headers: {
+      //   //   Authorization: `Bearer ${token}`,
+      // },
     });
     navigate(-1);
   }
@@ -79,9 +78,19 @@ function Order_edit() {
         },
       });
     }
-    deleteProduct();
+    deleteOrder();
     navigate("/orders");
   };
+
+  function statusIcons() {
+    if (order.status === "Pending") {
+      return <i className="bi bi-arrow-clockwise text-danger"></i>;
+    } else if (order.status === "In progress") {
+      return <i class="bi bi-box-arrow-right text-warning"></i>;
+    } else {
+      return <i class="bi bi-check-circle-fill text-success"></i>;
+    }
+  }
 
   return (
     order && (
@@ -92,36 +101,74 @@ function Order_edit() {
           </div>
           <div className="col-11 col-md-9 col-xl-10 ">
             <div className="content-container">
-              <h1 className="title">Order Id: {order.id} </h1>
+              <div className="d-flex flex-row justify-content-between">
+                <h1 className="title mb-0">Order Id: {order.id} </h1>
+                <span className="opactiy-50">
+                  {statusIcons()} {order.status}
+                </span>
+              </div>
+              <hr />
+
               <form
                 className="row g-3"
                 encType="multipart/form-data"
                 method="PATCH"
                 onSubmit={handleUpdate}
               >
-                <div className="col-md-1">
-                  <label htmlFor="userId" className="form-label">
-                    User Id
+                <div className="col-4 col-md-3">
+                  <label htmlFor="status" className="form-label mt-3">
+                    Status
                   </label>
-                  <input
-                    type="userId"
-                    className="form-control"
-                    onChange={(event) => setUserId(event.target.value)}
-                    value={userId}
-                    id="userId"
-                  />
+                  <select
+                    id="status"
+                    value={status}
+                    onChange={(event) => setStatus(event.target.value)}
+                    class="form-select form-select-sm bg-ligth"
+                    aria-label=".form-select-sm"
+                  >
+                    <option value="Pending">Pending</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Delivered">Delivered </option>
+                  </select>
                 </div>
 
                 <div className="col-4 col-md-2">
-                  <label htmlFor="status" className="form-label mt-3">
-                    Status
+                  <label htmlFor="subTotalPrice" className="form-label  mt-3">
+                    SubTotalPrice
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="status"
-                    onChange={(event) => setStatus(event.target.value)}
-                    value={status}
+                    id="subTotalPrice"
+                    disabled
+                    onChange={(event) => setSubTotalPrice(event.target.value)}
+                    value={subTotalPrice}
+                  />
+                </div>
+                <div className="col-4 col-md-2">
+                  <label htmlFor="taxes" className="form-label  mt-3">
+                    Taxes
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="taxes"
+                    disabled
+                    onChange={(event) => setTaxes(event.target.value)}
+                    value={taxes}
+                  />
+                </div>
+                <div className="col-4 col-md-2">
+                  <label htmlFor="totalAmount" className="form-label  mt-3">
+                    Total Amount
+                  </label>
+                  <input
+                    type="number"
+                    disabled
+                    className="form-control "
+                    id="totalAmount"
+                    onChange={(event) => setTotalAmount(event.target.value)}
+                    value={totalAmount}
                   />
                 </div>
                 <div className="col-12 col-md-4">
@@ -136,43 +183,20 @@ function Order_edit() {
                     value={address}
                   />
                 </div>
+
                 <div className="col-4 col-md-2">
-                  <label htmlFor="subTotalPrice" className="form-label  mt-3">
-                    SubTotalPrice
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="subTotalPrice"
-                    onChange={(event) => setSubTotalPrice(event.target.value)}
-                    value={subTotalPrice}
-                  />
-                </div>
-                <div className="col-4 col-md-2">
-                  <label htmlFor="taxes" className="form-label  mt-3">
-                    Taxes
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="taxes"
-                    onChange={(event) => setTaxes(event.target.value)}
-                    value={taxes}
-                  />
-                </div>
-                <div className="col-4 col-md-2">
-                  <label htmlFor="totalAmount" className="form-label  mt-3">
-                    Total Amount
+                  <label htmlFor="userId" className="form-label  mt-3">
+                    User Id
                   </label>
                   <input
                     type="number"
+                    disabled
                     className="form-control"
-                    id="totalAmount"
-                    onChange={(event) => setTotalAmount(event.target.value)}
-                    value={totalAmount}
+                    id="userId"
+                    onChange={(event) => setUserId(event.target.value)}
+                    value={userId}
                   />
                 </div>
-
                 <div className="d-flex flex-row justify-content-between">
                   <div>
                     <button onClick={handleDelete} className="btn btn-danger mt-3">

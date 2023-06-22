@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 
 function Order_tr({ order }) {
   function statusIcons() {
-    if (order.status === "pending") {
+    if (order.status === "Pending") {
       return <i className="bi bi-arrow-clockwise "></i>;
-    } else if (order.status === "in progress") {
+    } else if (order.status === "In progress") {
       return <i class="bi bi-box-arrow-right text-warning"></i>;
     } else {
       return <i class="bi bi-check-circle-fill text-success"></i>;
