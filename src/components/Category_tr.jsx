@@ -11,10 +11,14 @@ function Category_tr({ category }) {
       <td> {category.id}</td>
 
       <td className="thumbnail-container">
-        <img className="thumbnail-img" src={category.image} alt="" />
+        <img
+          className="thumbnail-img"
+          src={`http://localhost:3000/img/${category.image}`}
+          alt=""
+        />
       </td>
       <td className="text-start">{category.name}</td>
-      <td>{category.featured ? "True" : "False"}</td>
+      <td>{category.active ? "True" : "False"}</td>
       {/* <td>{category.active ? "True" : "False"} </td> */}
       <td>
         {" "}
