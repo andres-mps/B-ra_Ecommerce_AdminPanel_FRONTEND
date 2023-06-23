@@ -38,7 +38,7 @@ function Product_tr({ product }) {
       <td> {format(new Date(product.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/products/edit/${product.slug}`}>
-          <i className="bi bi-pencil-fill text-primary pencil"></i>
+          <i className="bi bi-pencil-fill text-primary pencil me-2"></i>
         </NavLink>
       </td>
     </tr>

@@ -31,7 +31,7 @@ function Orders() {
           <div className="col-1 col-md-3 col-xl-2  bg-dark">
             <Sidebar />
           </div>
-          <div className="col-11  col-md-9 col-xl-10 ">
+          <div className="col-11  col-md-9 col-xl-10 ps-5 ">
             <div className="table-wrap">
               <table className="table table-hover caption-top">
                 <caption className="title">Orders</caption>

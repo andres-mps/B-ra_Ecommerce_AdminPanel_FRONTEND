@@ -16,7 +16,7 @@ function Order_tr({ order }) {
   }
   return (
     <tr className="table-row">
-      <td className="opacity-100">
+      <td className="opacity-100 ms-3">
         {order.user.firstname} {order.user.lastname} (
         <small className="opacity-75">{order.user.email}</small>)
       </td>
@@ -35,7 +35,7 @@ function Order_tr({ order }) {
       <td> {format(new Date(order.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/orders/edit/${order.id}`}>
-          <i class="bi bi-pencil-fill text-primary pencil"></i>
+          <i class="bi bi-pencil-fill text-primary pencil me-2"></i>
         </NavLink>
       </td>
     </tr>

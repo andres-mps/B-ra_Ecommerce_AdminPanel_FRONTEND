@@ -23,11 +23,11 @@ function Sidebar() {
       >
         <li>
           <NavLink
-            to="#"
+            to="/"
             data-bs-toggle="collapse"
             className="text-decoration-none text-white zpx-0 align-middle"
           >
-            <i className="me-1 fs-4 bi-speedometer2"></i>
+            <i class="me-1 bi bi-house fs-5"></i>
             <span className="ms-2 d-none d-md-inline mb-4">Dashboard</span>
           </NavLink>
         </li>
@@ -37,7 +37,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white px-0 align-middle"
           >
-            <i className="me-2  fs-4 bi-table"></i>
+            <i class="bi bi-cart3 fs-5 me-2"></i>
             <span className="ms-1 d-none d-md-inline">Orders</span>
           </NavLink>
         </li>
@@ -48,7 +48,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white px-0 align-middle"
           >
-            <i className="me-2 fs-4 bi-grid"></i>
+            <i class="bi bi-bag fs-5 me-2"></i>
             <span className="ms-1 d-none d-md-inline">Products</span>
           </NavLink>
         </li>
@@ -58,7 +58,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white px-0 align-middle"
           >
-            <i className="me-2 fs-4 bi-list"></i>
+            <i className="me-2 fs-5 bi-list"></i>
             <span className="ms-1 d-none d-md-inline">Categories</span>
           </NavLink>
         </li>
@@ -67,7 +67,7 @@ function Sidebar() {
             to="/"
             className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
           >
-            <i className="me-2 fs-4 bi-people"></i>
+            <i className="me-2 fs-5 bi-people"></i>
             <span className="ms-1 d-none d-md-inline">Admins</span>
           </NavLink>
         </li>

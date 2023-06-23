@@ -41,7 +41,7 @@ function Products() {
         <div className="col-1 col-md-3 col-xl-2  bg-dark">
           <Sidebar />
         </div>
-        <div className="col-11  col-md-9 col-xl-10 ">
+        <div className="col-11  col-md-9 col-xl-10 ps-5 ">
           <div className="table-wrap">
             <NavLink
               to="/products/add"
@@ -67,7 +67,6 @@ function Products() {
                   <th scope="col">Active</th>
                   <th scope="col">CreatedAt</th>
                   <th scope="col">UpdatedAt</th>
-                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
