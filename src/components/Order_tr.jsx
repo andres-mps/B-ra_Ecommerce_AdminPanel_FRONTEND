@@ -16,12 +16,12 @@ function Order_tr({ order }) {
   }
   return (
     <tr className="table-row">
-      <td className="opacity-100 ms-3">
+      <td className="opacity-100 text-start ms-3">
         {order.user.firstname} {order.user.lastname} (
         <small className="opacity-75">{order.user.email}</small>)
       </td>
       {/* <td>{order.address}</td> */}
-      <td className="fs-7">
+      <td className="fs-7 text-start">
         {statusIcons()} {order.status}
       </td>
       {/* <td>{order.subTotalPrice}</td> */}

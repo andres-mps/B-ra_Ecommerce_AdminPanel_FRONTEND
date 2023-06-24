@@ -87,7 +87,7 @@ function Category_Edition() {
           </div>
           <div className="col-11 col-md-9 col-xl-10 ">
             <div className="content-container">
-              <h1 className=" title">{category.name} </h1>
+              <h1 className="title">{category.name} </h1>
               <form
                 className="row g-3"
                 encType="multipart/form-data"
@@ -148,28 +148,17 @@ function Category_Edition() {
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch
-                    size="small"
-                    checked={active}
-                    onChange={handleSwitchChange}
-                  />
+                  <Switch size="small" checked={active} onChange={handleSwitchChange} />
                 </div>
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button
-                      onClick={handleDelete}
-                      type="submit"
-                      className="btn btn-danger mt-3"
-                    >
+                    <button onClick={handleDelete} type="submit" className="btn btn-danger mt-3">
                       Delete
                     </button>
                   </div>
 
                   <div>
-                    <NavLink
-                      to="/categories"
-                      className="btn btn-outline-secondary me-2  mt-3"
-                    >
+                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

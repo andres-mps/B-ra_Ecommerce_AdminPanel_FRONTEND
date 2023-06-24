@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Dashboard.css";
 import Order_tr from "../components/Order_tr";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -40,27 +41,27 @@ function Dashboard() {
   return (
     <div className="container-fluid m-0 page-wrap">
       <div className="row ">
-        <div className="col-1 col-md-3 col-xl-2  bg-dark">
+        <div className="col-1 col-md-2 bg-dark">
           <Sidebar />
         </div>
 
-        <div className="col-11 col-md-9 col-xl-10 ps-5">
-          <h1 className="mt-5 fs-4">Dashboard</h1>
-          <h3 className="fs-6 my-3">Last 30 days</h3>
-          <div className="card-container me-5">
-            <div className="row">
+        <div className="col-11 col-md-9 col-xl-9 ps-5">
+          <div className="cards-container">
+            <h1 className="mt-5 fs-4">Dashboard</h1>
+            <h3 className="fs-6 my-3">Last 30 days</h3>
+            <div className="row ">
               <div className="col-12 col-lg-4">
-                <div class="card mt-2 border-0 shadow-sm">
+                <div class="card mt-2 border-0 p-0 shadow-sm">
                   <div class="card-body">
                     <div className="d-flex flex-row nowrap pb-4">
                       <i class="bi bi-bag-check bg-primary opacity-75 fs-3 me-3 mb-2 text-white px-2 py-1 rounded"></i>
                       <div>
                         <div>
-                          <p class="card-title d-inline fs-5 nowrap">
-                            Monthly sales <small className="opacity-50 fs-6">(USD)</small>
+                          <p class="card-title d-inline fs-6 nowrap">
+                            Monthly sales <small className="opacity-50 fs-7">(USD)</small>
                           </p>
                         </div>
-                        <p class="card-text fs-4 fw-semibold  d-inline">153.603</p>{" "}
+                        <p class="card-text fs-5 fw-semibold  d-inline">153.603</p>{" "}
                         <span>
                           <i class="bi bi-arrow-up text-success fw-normal">21%</i>
                         </span>
@@ -82,11 +83,11 @@ function Dashboard() {
                       <i class="bi bi-bag-check bg-primary opacity-75 fs-3 me-3 mb-2 text-white px-2 py-1 rounded"></i>
                       <div>
                         <div>
-                          <p class="card-title d-inline fs-5 nowrap">
+                          <p class="card-title d-inline fs-6 nowrap">
                             Number of orders <small className="opacity-50 fs-6">(QTY)</small>
                           </p>
                         </div>
-                        <p class="card-text fs-4 fw-semibold  d-inline">98.332</p>{" "}
+                        <p class="card-text fs-5 fw-semibold  d-inline">98.332</p>{" "}
                         <span>
                           <i class="bi bi-arrow-up text-success fw-normal">15%</i>
                         </span>
@@ -108,11 +109,11 @@ function Dashboard() {
                       <i class="bi bi-bag-check bg-primary opacity-75 fs-3 me-3 mb-2 text-white px-2 py-1 rounded"></i>
                       <div>
                         <div>
-                          <p class="card-title d-inline fs-5 nowrap">
+                          <p class="card-title d-inline fs-6 nowrap">
                             Convertion rate <small className="opacity-50 fs-6">(%)</small>
                           </p>
                         </div>
-                        <p class="card-text fs-4 fw-semibold  d-inline">1.3%</p>{" "}
+                        <p class="card-text fs-5 fw-semibold  d-inline">1.3%</p>{" "}
                         <span>
                           <i class="bi bi-arrow-up text-success fw-normal">0.1 p.p.</i>
                         </span>
@@ -131,8 +132,13 @@ function Dashboard() {
           </div>
 
           <div className="table-wrap">
-            <table className="table table-hover caption-top">
-              <caption className="title">Last 10 Orders</caption>
+            <div className=" page-title-container d-flex justify-content-between">
+              <h2 className="title">Last 10 orders</h2>
+              <NavLink to="/orders" className="btn create_btn ">
+                View all
+              </NavLink>
+            </div>
+            <table className="table table-hover">
               <thead>
                 <tr className="headers">
                   <th scope="col">User </th>

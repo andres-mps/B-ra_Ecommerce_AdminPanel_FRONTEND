@@ -1,7 +1,12 @@
 .sidebar {
-  width: 200px;
-  background-color: whitesmoke;
-  transition: width 0.3s ease;
-  align-items: center;
-  min-height: 100vh;
+  min-width: 400px;
+}
+
+ul {
+  list-style: none;
+}
+
+.list {
+  height: 60vh;
+  display: flex;
 }

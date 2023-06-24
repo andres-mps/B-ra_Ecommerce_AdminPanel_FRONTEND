@@ -26,30 +26,30 @@ function Categories() {
   return (
     <div className="container-fluid m-0 page-wrap">
       <div className="row">
-        <div className="col-1 col-md-3 col-xl-2 bg-dark">
+        <div className="col-1 col-md-2  bg-dark">
           <Sidebar />
         </div>
         <div className="col-11  col-md-9 col-xl-10">
           <div className="table-wrap">
+            <div className=" page-title-container d-flex justify-content-between">
+              <h2 className="title">Categories</h2>
+            </div>
             <table className="table table-hover caption-top">
-              <caption className="title">Categories</caption>
               <thead>
-                <tr className="headers">
+                <tr className="headers  sticky-top">
                   <th scope="col">Id</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Active</th>
                   <th scope="col">CreatedAt</th>
                   <th scope="col">UpdatedAt</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
                 {categories &&
                   categories.map((category) => {
-                    return (
-                      <Category_tr key={category.id} category={category} />
-                    );
+                    return <Category_tr key={category.id} category={category} />;
                   })}
               </tbody>
             </table>
