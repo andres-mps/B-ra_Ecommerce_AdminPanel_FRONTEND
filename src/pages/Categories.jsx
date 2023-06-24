@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Categories.css";
 import Category_tr from "../components/Category_tr";
 import Sidebar from "../components/Sidebar";
+import { NavLink } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -18,7 +19,7 @@ function Categories() {
         // },
       });
       setCategories(categories.data);
-      console.log(categories.data);
+      //console.log(categories.data);
     }
     getCategoryInfo();
   }, []);
@@ -31,6 +32,12 @@ function Categories() {
         </div>
         <div className="col-11  col-md-9 col-xl-10">
           <div className="table-wrap">
+            <NavLink
+              to="/categories/add"
+              className="btn create_btn shadow d-inline text-right opacity-75 sticky-top me-2  mt-3"
+            >
+              Add Category
+            </NavLink>
             <table className="table table-hover caption-top">
               <caption className="title">Categories</caption>
               <thead>
