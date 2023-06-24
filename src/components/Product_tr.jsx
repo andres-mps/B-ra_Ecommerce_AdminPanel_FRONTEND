@@ -28,17 +28,15 @@ function Product_tr({ product }) {
         {product.stock}
       </td>
       <td>{product.category.name}</td>
-      <td>{product.categoryId}</td>
       <td>{product.featured ? <i class="bi bi-star-fill text-warning "></i> : "-"}</td>
       {/* <td className="collapsible-cell text-start">
         <span className="collapsible-content">{product.description}</span>
       </td> */}
       <td>{product.active ? "True" : "False"} </td>
-      <td> {format(new Date(product.createdAt), "dd MMM yy", { locale: enUS })}</td>
       <td> {format(new Date(product.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/products/edit/${product.slug}`}>
-          <i className="bi bi-pencil-fill text-primary pencil"></i>
+          <i className="bi bi-pencil-fill text-primary pencil me-2"></i>
         </NavLink>
       </td>
     </tr>

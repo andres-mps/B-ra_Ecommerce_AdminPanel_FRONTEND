@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar";
+import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Product_Edition from "./pages/Product_Edition";
 import Product_Add from "./pages/Product_Add";
@@ -17,7 +18,7 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<Dashboard />} /> */}
+        <Route path="/" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<Product_Add />} />
         <Route path="/categories/add" element={<Category_Add />} />

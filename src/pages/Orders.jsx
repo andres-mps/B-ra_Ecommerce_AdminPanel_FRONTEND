@@ -28,15 +28,17 @@ function Orders() {
     orders && (
       <div className="container-fluid  m-0 page-wrap">
         <div className="row">
-          <div className="col-1 col-md-3 col-xl-2  bg-dark">
+          <div className="col-1 col-md-2   bg-dark">
             <Sidebar />
           </div>
-          <div className="col-11  col-md-9 col-xl-10 ">
+          <div className="col-11  col-md-9 col-xl-10">
             <div className="table-wrap">
-              <table className="table table-hover caption-top">
-                <caption className="title">Orders</caption>
+              <div className=" page-title-container d-flex justify-content-between">
+                <h2 className="title">Orders</h2>
+              </div>
+              <table className="table table-hover m-0 p-0">
                 <thead>
-                  <tr className="headers">
+                  <tr className="headers sticky-top">
                     <th scope="col">User </th>
                     {/* <th scope="col">Address</th> */}
                     <th scope="col">Status</th>
@@ -47,6 +49,7 @@ function Orders() {
                     {/* <th scope="col">Products</th> */}
                     <th scope="col">CreatedAt</th>
                     <th scope="col">UpdatedAt</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>

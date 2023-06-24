@@ -38,21 +38,20 @@ function Products() {
   return (
     <div className="container-fluid m-0 page-wrap">
       <div className="row">
-        <div className="col-1 col-md-3 col-xl-2  bg-dark">
+        <div className="col-1 col-md-2  mx-auto bg-dark">
           <Sidebar />
         </div>
-        <div className="col-11  col-md-9 col-xl-10 ">
+        <div className="col-11 col-md-9 col-xl-10">
           <div className="table-wrap">
-            <NavLink
-              to="/products/add"
-              className="btn create_btn shadow d-inline text-right opacity-75 sticky-top me-2  mt-3"
-            >
-              Add Product
-            </NavLink>
-            <table className="table table-hover caption-top">
-              <caption className="title">Products</caption>
+            <div className=" page-title-container d-flex justify-content-between">
+              <h2 className="title">Products</h2>
+              <NavLink to="/products/add" className="btn create_btn ">
+                Add Product
+              </NavLink>
+            </div>
+            <table className="table   table-hover">
               <thead>
-                <tr className="headers">
+                <tr className="headers sticky-top">
                   <th scope="col">Id</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
@@ -61,13 +60,11 @@ function Products() {
                   <th scope="col">Abv</th>
                   <th scope="col">Stock</th>
                   <th scope="col">Category</th>
-                  <th scope="col">CategoryId</th>
                   <th scope="col">Featured</th>
                   {/* <th scope="col">Description</th> */}
                   <th scope="col">Active</th>
-                  <th scope="col">CreatedAt</th>
                   <th scope="col">UpdatedAt</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
