@@ -5,6 +5,7 @@ import Product_tr from "../components/Product_tr";
 import "./Products.css";
 import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
+import { Skeleton } from "antd";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -38,10 +39,10 @@ function Products() {
   return (
     <div className="container-fluid m-0 page-wrap">
       <div className="row">
-        <div className="col-1 col-md-2  mx-auto bg-dark">
+        <div className="col-2 ">
           <Sidebar />
         </div>
-        <div className="col-11 col-md-9 col-xl-10">
+        <div className="col-10">
           <div className="table-wrap">
             <div className=" page-title-container d-flex justify-content-between">
               <h2 className="title">Products</h2>
@@ -49,7 +50,8 @@ function Products() {
                 Add Product
               </NavLink>
             </div>
-            <table className="table   table-hover">
+
+            <table className="table table-hover">
               <thead>
                 <tr className="headers sticky-top">
                   <th scope="col">Id</th>
@@ -74,6 +76,7 @@ function Products() {
                   })}
               </tbody>
             </table>
+            {products.length === 0 && <Skeleton active className="mt-3" />}
           </div>
         </div>
       </div>

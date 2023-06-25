@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Categories.css";
 import Category_tr from "../components/Category_tr";
 import Sidebar from "../components/Sidebar";
+import { Skeleton } from "antd";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -25,11 +26,11 @@ function Categories() {
 
   return (
     <div className="container-fluid m-0 page-wrap">
-      <div className="row">
-        <div className="col-1 col-md-2  bg-dark">
+      <div className="row g-0">
+        <div className="col-2">
           <Sidebar />
         </div>
-        <div className="col-11  col-md-9 col-xl-10">
+        <div className="col-10">
           <div className="table-wrap">
             <div className=" page-title-container d-flex justify-content-between">
               <h2 className="title">Categories</h2>
@@ -53,6 +54,7 @@ function Categories() {
                   })}
               </tbody>
             </table>
+            {categories.length === 0 && <Skeleton active />}
           </div>
         </div>
       </div>

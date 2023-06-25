@@ -5,6 +5,7 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { Skeleton } from "antd";
 
 function Product_Edition() {
   const navigate = useNavigate();
@@ -108,6 +109,8 @@ function Product_Edition() {
           </div>
           <div className="col-11 col-md-9 col-xl-10 ">
             <div className="content-container">
+              {product.length === 0 && <Skeleton active className="mt-3" />}
+
               <h1 className="title">{product.name} </h1>
               <form
                 className="row g-3"

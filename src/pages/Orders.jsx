@@ -5,6 +5,7 @@ import "./Orders.css";
 import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
 import Order_tr from "../components/Order_tr";
+import { Skeleton } from "antd";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -27,11 +28,11 @@ function Orders() {
   return (
     orders && (
       <div className="container-fluid  m-0 page-wrap">
-        <div className="row">
-          <div className="col-1 col-md-2   bg-dark">
+        <div className="row g-0">
+          <div className="col-2 ">
             <Sidebar />
           </div>
-          <div className="col-11  col-md-9 col-xl-10">
+          <div className="col-10">
             <div className="table-wrap">
               <div className=" page-title-container d-flex justify-content-between">
                 <h2 className="title">Orders</h2>
@@ -59,6 +60,7 @@ function Orders() {
                     })}
                 </tbody>
               </table>
+              {orders.length === 0 && <Skeleton active className="mt-3" />}
             </div>
           </div>
         </div>

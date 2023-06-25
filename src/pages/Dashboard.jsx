@@ -7,12 +7,13 @@ import "./Dashboard.css";
 import Order_tr from "../components/Order_tr";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Skeleton } from "antd";
 
 function Dashboard() {
   const notify = () =>
-    toast.warn("Sorry, this feature is still under develpment", {
+    toast.warn("Sorry, this feature is still under development", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 4000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -41,13 +42,12 @@ function Dashboard() {
   return (
     <div className="container-fluid m-0 page-wrap">
       <div className="row ">
-        <div className="col-1 col-md-2 bg-dark">
+        <div className="col-2">
           <Sidebar />
         </div>
-
-        <div className="col-11 col-md-9 col-xl-9 ps-5">
+        <div className="col-10 ps-5">
           <div className="cards-container">
-            <h1 className="mt-5 fs-4">Dashboard</h1>
+            <h2 className=" title mt-5 fs-4">Dashboard</h2>
             <h3 className="fs-6 my-3">Last 30 days</h3>
             <div className="row ">
               <div className="col-12 col-lg-4">
@@ -160,6 +160,7 @@ function Dashboard() {
                   })}
               </tbody>
             </table>
+            {orders.length === 0 && <Skeleton active className="mt-3" />}
           </div>
         </div>
 
