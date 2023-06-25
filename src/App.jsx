@@ -12,6 +12,7 @@ import Orders from "./pages/Orders";
 import Order_Edit from "./pages/Order_Edit";
 import Categories from "./pages/Categories";
 import Category_Edition from "./pages/Category_Edition";
+import Category_Add from "./pages/Category_Add";
 
 function App() {
   return (
@@ -20,10 +21,14 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<Product_Add />} />
+        <Route path="/categories/add" element={<Category_Add />} />
         <Route path="/products/edit/:product" element={<Product_Edition />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category-edition" element={<Category_Edition />} />
-        <Route path="/categories/edit/:category" element={<Category_Edition />} />
+        <Route
+          path="/categories/edit/:category"
+          element={<Category_Edition />}
+        />
         <Route path="/users" element={<Users />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/orders/edit/:orderId" element={<Order_Edit />} />

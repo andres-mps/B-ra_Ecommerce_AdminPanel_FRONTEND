@@ -5,6 +5,7 @@ import "./Categories.css";
 import Category_tr from "../components/Category_tr";
 import Sidebar from "../components/Sidebar";
 import { Skeleton } from "antd";
+import { NavLink } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -19,7 +20,7 @@ function Categories() {
         // },
       });
       setCategories(categories.data);
-      console.log(categories.data);
+      //console.log(categories.data);
     }
     getCategoryInfo();
   }, []);
@@ -35,6 +36,12 @@ function Categories() {
             <div className=" page-title-container d-flex justify-content-between">
               <h2 className="title">Categories</h2>
             </div>
+            <NavLink
+              to="/categories/add"
+              className="btn create_btn shadow d-inline text-right opacity-75 sticky-top me-2  mt-3"
+            >
+              Add Category
+            </NavLink>
             <table className="table table-hover caption-top">
               <thead>
                 <tr className="headers  sticky-top">
