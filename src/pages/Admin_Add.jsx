@@ -58,20 +58,6 @@ function Admin_Add() {
                 method="PATCH"
                 onSubmit={handleUpdate}
               >
-                <div className="col-md-1">
-                  <label htmlFor="id" className="form-label">
-                    Id
-                  </label>
-                  <input
-                    disabled
-                    readOnly
-                    type="id"
-                    className="form-control"
-                    id="id"
-                    placeholder={admin.id}
-                  />
-                </div>
-
                 <div className="col-md-4">
                   <label htmlFor="firstname" className="form-label">
                     Firstname
