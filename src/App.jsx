@@ -11,6 +11,9 @@ import Order_Edit from "./pages/Order_Edit";
 import Categories from "./pages/Categories";
 import Category_Edition from "./pages/Category_Edition";
 import Category_Add from "./pages/Category_Add";
+import Admins from "./pages/Admins";
+import Admin_Edition from "./pages/Admin_Edition";
+import Admin_Add from "./pages/Admin_Add";
 
 function App() {
   return (
@@ -23,9 +26,15 @@ function App() {
         <Route path="/products/edit/:product" element={<Product_Edition />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category-edition" element={<Category_Edition />} />
-        <Route path="/categories/edit/:category" element={<Category_Edition />} />
+        <Route
+          path="/categories/edit/:category"
+          element={<Category_Edition />}
+        />
         <Route path="/orders" element={<Orders />} />
         <Route path="/orders/edit/:orderId" element={<Order_Edit />} />
+        <Route path="/admins" element={<Admins />} />
+        <Route path="/admins/add" element={<Admin_Add />} />
+        <Route path="/admins/edit/:id" element={<Admin_Edition />} />
       </Routes>
     </>
   );
