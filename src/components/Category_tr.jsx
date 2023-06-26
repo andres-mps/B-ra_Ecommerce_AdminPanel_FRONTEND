@@ -11,7 +11,11 @@ function Category_tr({ category }) {
       <td> {category.id}</td>
 
       <td className="thumbnail-container">
-        <img className="thumbnail-img" src={`http://localhost:3000/img/${category.image}`} alt="" />
+        <img
+          className="thumbnail-img"
+          src={`${import.meta.env.VITE_APP_BACK_IMG + category.image}`}
+          alt=""
+        />
       </td>
       <td className="text-start">{category.name}</td>
       <td>{category.active ? "True" : "False"}</td>

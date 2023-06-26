@@ -100,6 +100,8 @@ function Product_Edition() {
   //   setActive(checked);
   // };
 
+  console.log(import.meta.env.VITE_APP_BACK_IMG);
+
   return (
     product && (
       <div className="page-wrap">
@@ -162,7 +164,7 @@ function Product_Edition() {
                   <div className="product-img-container">
                     <img
                       className="product-img"
-                      src={`http://localhost:3000/img/${product.image}`}
+                      src={`${import.meta.env.VITE_APP_BACK_IMG + product.image}`}
                       alt=""
                     />
                   </div>
