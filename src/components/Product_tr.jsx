@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 function Product_tr({ product }) {
   function stockIcons() {
     if (product.stock === 0) {
-      return <i class="bi bi-exclamation-triangle-fill text-danger"></i>;
+      return <i className="bi bi-exclamation-triangle-fill text-danger"></i>;
     }
   }
 
@@ -28,7 +28,7 @@ function Product_tr({ product }) {
         {product.stock}
       </td>
       <td>{product.category.name}</td>
-      <td>{product.featured ? <i class="bi bi-star-fill text-warning "></i> : "-"}</td>
+      <td>{product.featured ? <i className="bi bi-star-fill text-warning "></i> : "-"}</td>
       {/* <td className="collapsible-cell text-start">
         <span className="collapsible-content">{product.description}</span>
       </td> */}

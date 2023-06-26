@@ -27,8 +27,8 @@ function Orders() {
 
   return (
     orders && (
-      <div className="container-fluid  m-0 page-wrap">
-        <div className="row g-0">
+      <div className="page-wrap">
+        <div className="row">
           <div className="col-2 ">
             <Sidebar />
           </div>

@@ -86,15 +86,15 @@ function Order_edit() {
     if (order.status === "Pending") {
       return <i className="bi bi-arrow-clockwise text-danger"></i>;
     } else if (order.status === "In progress") {
-      return <i class="bi bi-box-arrow-right text-warning"></i>;
+      return <i className="bi bi-box-arrow-right text-warning"></i>;
     } else {
-      return <i class="bi bi-check-circle-fill text-success"></i>;
+      return <i className="bi bi-check-circle-fill text-success"></i>;
     }
   }
 
   return (
     order && (
-      <div className="container-fluid page-wrap">
+      <div className="page-wrap">
         <div className="row">
           <div className="col-1 col-md-3 col-xl-2  bg-dark">
             <Sidebar />
@@ -123,7 +123,7 @@ function Order_edit() {
                     id="status"
                     value={status}
                     onChange={(event) => setStatus(event.target.value)}
-                    class="form-select form-select-sm bg-ligth"
+                    className="form-select form-select-sm bg-ligth"
                     aria-label=".form-select-sm"
                   >
                     <option value="Pending">Pending</option>

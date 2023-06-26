@@ -1,14 +1,8 @@
-.page-wrap {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(243 244 246);
-}
-
 .table-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4rem auto;
+  margin: 3rem auto;
   padding-left: 1px;
   width: fit-content;
 }

@@ -37,7 +37,7 @@ function Products() {
   }, []);
 
   return (
-    <div className="container-fluid m-0 page-wrap">
+    <div className="m-0 page-wrap">
       <div className="row">
         <div className="col-2 ">
           <Sidebar />

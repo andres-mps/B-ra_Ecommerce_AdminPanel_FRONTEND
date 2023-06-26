@@ -102,12 +102,12 @@ function Product_Edition() {
 
   return (
     product && (
-      <div className="container-fluid page-wrap">
+      <div className="page-wrap">
         <div className="row">
-          <div className="col-1 col-md-3 col-xl-2  bg-dark">
+          <div className="col-2 ">
             <Sidebar />
           </div>
-          <div className="col-11 col-md-9 col-xl-10 ">
+          <div className="col-10">
             <div className="content-container">
               {product.length === 0 && <Skeleton active className="mt-3" />}
 

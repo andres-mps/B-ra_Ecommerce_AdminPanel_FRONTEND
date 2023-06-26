@@ -9,9 +9,9 @@ function Order_tr({ order }) {
     if (order.status === "Pending") {
       return <i className="bi bi-arrow-clockwise "></i>;
     } else if (order.status === "In progress") {
-      return <i class="bi bi-box-arrow-right text-warning"></i>;
+      return <i className="bi bi-box-arrow-right text-warning"></i>;
     } else {
-      return <i class="bi bi-check-circle-fill text-success"></i>;
+      return <i className="bi bi-check-circle-fill text-success"></i>;
     }
   }
   return (
@@ -35,7 +35,7 @@ function Order_tr({ order }) {
       <td> {format(new Date(order.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/orders/edit/${order.id}`}>
-          <i class="bi bi-pencil-fill text-primary pencil me-2"></i>
+          <i className="bi bi-pencil-fill text-primary pencil me-2"></i>
         </NavLink>
       </td>
     </tr>

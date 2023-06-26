@@ -26,8 +26,8 @@ function Categories() {
   }, []);
 
   return (
-    <div className="container-fluid m-0 page-wrap">
-      <div className="row g-0">
+    <div className="page-wrap">
+      <div className="row">
         <div className="col-2">
           <Sidebar />
         </div>
@@ -35,13 +35,10 @@ function Categories() {
           <div className="table-wrap">
             <div className=" page-title-container d-flex justify-content-between">
               <h2 className="title">Categories</h2>
+              <NavLink to="/categories/add" className="btn create_btn ">
+                Add Category
+              </NavLink>
             </div>
-            <NavLink
-              to="/categories/add"
-              className="btn create_btn shadow d-inline text-right opacity-75 sticky-top me-2  mt-3"
-            >
-              Add Category
-            </NavLink>
             <table className="table table-hover caption-top">
               <thead>
                 <tr className="headers  sticky-top">

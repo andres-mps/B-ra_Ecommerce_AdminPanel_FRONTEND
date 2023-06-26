@@ -11,7 +11,7 @@ function Sidebar() {
 
         <div id="" className="link-container">
           <NavLink to="/" data-bs-toggle="collapse" className=" text-decoration-none text-white">
-            <i class="me-1 bi bi-house fs-5"></i>
+            <i className="me-1 bi bi-house fs-5"></i>
             <span className="ms-2 d-none d-xl-inline mb-4">Dashboard</span>
           </NavLink>
         </div>
@@ -22,7 +22,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i class="bi bi-bag fs-5 me-2"></i>
+            <i className="bi bi-bag fs-5 me-2"></i>
             <span className="ms-2 d-none d-xl-inline mb-4">Products</span>
           </NavLink>
         </div>
@@ -32,7 +32,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i class="bi bi-cart3 fs-5 me-2"></i>
+            <i className="bi bi-cart3 fs-5 me-2"></i>
             <span className="ms-2 d-none d-xl-inline mb-4">Orders</span>
           </NavLink>
         </div>

@@ -2,12 +2,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Product_Edition from "./pages/Product_Edition";
 import Product_Add from "./pages/Product_Add";
-import Users from "./pages/Users";
 import Orders from "./pages/Orders";
 import Order_Edit from "./pages/Order_Edit";
 import Categories from "./pages/Categories";
@@ -25,11 +23,7 @@ function App() {
         <Route path="/products/edit/:product" element={<Product_Edition />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category-edition" element={<Category_Edition />} />
-        <Route
-          path="/categories/edit/:category"
-          element={<Category_Edition />}
-        />
-        <Route path="/users" element={<Users />} />
+        <Route path="/categories/edit/:category" element={<Category_Edition />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/orders/edit/:orderId" element={<Order_Edit />} />
       </Routes>

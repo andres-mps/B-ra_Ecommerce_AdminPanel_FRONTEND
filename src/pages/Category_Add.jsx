@@ -46,12 +46,12 @@ function Category_Add() {
 
   return (
     category && (
-      <div className="container-fluid page-wrap">
+      <div className="page-wrap">
         <div className="row">
-          <div className="col-1 col-md-3 col-xl-2  bg-dark">
+          <div className="col-2 ">
             <Sidebar />
           </div>
-          <div className="col-11 col-md-9 col-xl-10 ">
+          <div className="col-10">
             <div className="content-container">
               <h1 className="title">{category.name} </h1>
               <form
@@ -113,19 +113,12 @@ function Category_Add() {
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch
-                    size="small"
-                    checked={category.active}
-                    onChange={handleSwitchChange}
-                  />
+                  <Switch size="small" checked={category.active} onChange={handleSwitchChange} />
                 </div>
 
                 <div className="d-flex flex-row justify-content-end">
                   <div>
-                    <NavLink
-                      to="/categories"
-                      className="btn btn-outline-secondary me-2  mt-3"
-                    >
+                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

@@ -1,6 +1,7 @@
-* {
+body {
   box-sizing: border-box;
   font-family: var(--font-body-family);
+  background-color: rgb(243 244 246) !important;
 }
 
 .btn {
