@@ -75,7 +75,7 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className="text-decoration-none text-white"
           >
-            <i class="bi bi-arrow-90deg-left"></i>
+            <i className="bi bi-arrow-90deg-left"></i>
             <span className="ms-2 d-none d-xl-inline mb-4">
               Return to website
             </span>

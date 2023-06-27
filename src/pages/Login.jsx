@@ -78,7 +78,7 @@ function Login() {
               Sign in
             </button>
             {err && (
-              <div class="text-danger mt-2 login-alert" role="alert">
+              <div className="text-danger mt-2 login-alert" role="alert">
                 {err}
               </div>
             )}
