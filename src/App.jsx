@@ -14,12 +14,14 @@ import Category_Add from "./pages/Category_Add";
 import Admins from "./pages/Admins";
 import Admin_Edition from "./pages/Admin_Edition";
 import Admin_Add from "./pages/Admin_Add";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<Product_Add />} />
         <Route path="/categories/add" element={<Category_Add />} />
