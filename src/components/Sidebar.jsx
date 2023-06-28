@@ -85,7 +85,7 @@ function Sidebar() {
             className="text-decoration-none text-white"
           >
             <button
-              className="ms-2 d-none d-xl-inline mb-4 btn btn-danger text-white rounded-0"
+              className="ms-2 d-none d-xl-inline mb-4 mt-5 btn btn-danger text-white rounded-0"
               onClick={() => dispatch(logOut())}
             >
               Log out
