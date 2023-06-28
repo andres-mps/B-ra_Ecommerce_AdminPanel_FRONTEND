@@ -23,7 +23,8 @@ function Product_Edition() {
   const [featured, setFeatured] = useState(null);
   const [active, setActive] = useState(null);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [mainImage, setMainImage] = useState("");
+  const [altImage, setAltImage] = useState("");
 
   useEffect(() => {
     async function getProductInfo() {
@@ -45,6 +46,8 @@ function Product_Edition() {
       setFeatured(response.data.featured);
       setActive(response.data.active);
       setDescription(response.data.description);
+      setMainImage(response.data.image.main);
+      setAltImage(response.data.image.alt);
 
       // console.log(response.data);
     }
@@ -54,20 +57,19 @@ function Product_Edition() {
   async function handleUpdate(event) {
     event.preventDefault();
 
-    const formData = {
-      id,
-      name,
-      price,
-      stock,
-      size,
-      abv,
-      categoryId,
-      description,
-      image,
-      featured,
-      active,
-    };
-    console.log(formData);
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("size", size);
+    formData.append("abv", abv);
+    formData.append("categoryId", categoryId);
+    formData.append("description", description);
+    formData.append("mainImage", mainImage);
+    formData.append("altImage", altImage);
+    formData.append("featured", featured);
+    formData.append("active", active);
 
     await axios({
       method: "PATCH",
@@ -95,12 +97,6 @@ function Product_Edition() {
     deleteProduct();
     navigate("/products");
   };
-
-  // const handleSwitchChange = (checked) => {
-  //   setActive(checked);
-  // };
-
-  console.log(import.meta.env.VITE_APP_BACK_IMG);
 
   return (
     product && (
@@ -131,6 +127,7 @@ function Product_Edition() {
                     className="form-control"
                     id="id"
                     placeholder={product.id}
+                    name="id"
                   />
                 </div>
 
@@ -144,29 +141,52 @@ function Product_Edition() {
                     onChange={(event) => setName(event.target.value)}
                     value={name}
                     id="name"
+                    name="name"
                   />
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="formFileMultiple" className="form-label">
-                    Upload product images:
+                  <label htmlFor="formFileSm" className="form-label mb-0">
+                    Main image:
                   </label>
                   <input
-                    className="form-control"
+                    className="form-control form-control-sm"
                     type="file"
-                    id="formFileMultiple"
+                    id="formFileSm"
                     multiple
-                    onChange={(event) => setImage(event.target.files[0])}
+                    onChange={(event) => setMainImage(event.target.files[0])}
+                    name="mainImage"
+                  />
+
+                  <label htmlFor="formFileSm" className="form-label mb-0 mt-1">
+                    Alternative image:
+                  </label>
+                  <input
+                    className="form-control form-control-sm"
+                    type="file"
+                    id="formFileSm"
+                    multiple
+                    onChange={(event) => setAltImage(event.target.files[0])}
+                    name="altImage"
                   />
                 </div>
 
-                <div className="col-md-3  d-flex flex-row">
-                  <div className="product-img-container">
-                    <img
-                      className="product-img"
-                      src={`${import.meta.env.VITE_APP_BACK_IMG + product.image}`}
-                      alt=""
-                    />
+                <div className="col-md-3 ">
+                  <div className="product-img-container d-flex flex-row">
+                    {/* {product.image.main && (
+                      <img
+                        className="product-img"
+                        src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.main}`}
+                        alt=""
+                      />
+                    )}
+                    {product.image.alt && (
+                      <img
+                        className="product-img"
+                        src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.alt}`}
+                        alt=""
+                      />
+                    )} */}
                   </div>
                 </div>
 
@@ -180,6 +200,7 @@ function Product_Edition() {
                     id="price"
                     onChange={(event) => setPrice(event.target.value)}
                     value={price}
+                    name="price"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -192,6 +213,7 @@ function Product_Edition() {
                     id="stock"
                     onChange={(event) => setStock(event.target.value)}
                     value={stock}
+                    name="stock"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -204,6 +226,7 @@ function Product_Edition() {
                     id="size"
                     onChange={(event) => setSize(event.target.value)}
                     value={size}
+                    name="size"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -216,6 +239,7 @@ function Product_Edition() {
                     id="abv"
                     onChange={(event) => setAbv(event.target.value)}
                     value={abv}
+                    name="abv"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -228,6 +252,7 @@ function Product_Edition() {
                     id="categoryId"
                     onChange={(event) => setCategoryId(event.target.value)}
                     value={categoryId}
+                    name="categoryId"
                   />
                 </div>
 
@@ -251,10 +276,10 @@ function Product_Edition() {
                   <textarea
                     className="form-control"
                     id="description"
-                    name="content"
                     rows="3"
                     onChange={(event) => setDescription(event.target.value)}
                     value={description}
+                    name="description"
                   ></textarea>
                 </div>
 

@@ -138,7 +138,7 @@ function Category_Edition() {
                   <div className="product-img-container">
                     <img
                       className="product-img"
-                      src={`http://localhost:3000/img/${category.image}`}
+                      src={`${import.meta.env.VITE_APP_BACK_IMG + category.image}`}
                       alt=""
                     />
                   </div>

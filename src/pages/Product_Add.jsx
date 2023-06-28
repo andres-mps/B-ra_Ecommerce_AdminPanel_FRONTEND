@@ -19,27 +19,29 @@ function Product_Add() {
   const [size, setSize] = useState("");
   const [abv, setAbv] = useState("");
   const [categoryId, setCategoryId] = useState(0);
-  const [featured, setFeatured] = useState(null);
-  const [active, setActive] = useState(null);
+  const [featured, setFeatured] = useState(false);
+  const [active, setActive] = useState(false);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [mainImage, setMainImage] = useState("");
+  const [altImage, setAltImage] = useState("");
 
-  async function handleUpdate(event) {
+  async function handleCreate(event) {
     event.preventDefault();
 
-    const formData = {
-      id,
-      name,
-      price,
-      stock,
-      size,
-      abv,
-      categoryId,
-      description,
-      image,
-      featured,
-      active,
-    };
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("size", size);
+    formData.append("abv", abv);
+    formData.append("categoryId", categoryId);
+    formData.append("description", description);
+    formData.append("mainImage", mainImage);
+    formData.append("altImage", altImage);
+    formData.append("featured", featured);
+    formData.append("active", active);
+
     console.log(formData);
 
     await axios({
@@ -53,10 +55,6 @@ function Product_Add() {
     });
     navigate(-1);
   }
-
-  const handleSwitchChange = (checked) => {
-    setActive(checked);
-  };
 
   return (
     product && (
@@ -72,7 +70,7 @@ function Product_Add() {
                 className="row g-3"
                 encType="multipart/form-data"
                 method="PATCH"
-                onSubmit={handleUpdate}
+                onSubmit={handleCreate}
               >
                 <div className="col-md-1">
                   <label htmlFor="id" className="form-label">
@@ -84,7 +82,8 @@ function Product_Add() {
                     type="id"
                     className="form-control"
                     id="id"
-                    placeholder={product.id}
+                    placeholder=""
+                    name="id"
                   />
                 </div>
 
@@ -98,30 +97,35 @@ function Product_Add() {
                     onChange={(event) => setName(event.target.value)}
                     value={name}
                     id="name"
+                    name="name"
                   />
                 </div>
 
-                <div className="col-md-4">
-                  <label htmlFor="formFileMultiple" className="form-label">
-                    Upload product images:
+                <div className="col-md-3">
+                  <label htmlFor="formFileSm" className="form-label mb-2">
+                    Main image:
                   </label>
                   <input
-                    className="form-control"
+                    className="form-control form-control-sm"
                     type="file"
-                    id="formFileMultiple"
+                    id="formFileSm"
                     multiple
-                    onChange={(event) => setImage(event.target.files[0])}
+                    onChange={(event) => setMainImage(event.target.files[0])}
+                    name="mainImage"
                   />
                 </div>
-
-                <div className="col-md-3  d-flex flex-row">
-                  <div className="product-img-container">
-                    <img
-                      className="product-img"
-                      src={`http://localhost:3000/img/${product.image}`}
-                      alt=""
-                    />
-                  </div>
+                <div className="col-md-3">
+                  <label htmlFor="formFileSm" className="form-label mb-2">
+                    Alternative image:
+                  </label>
+                  <input
+                    className="form-control form-control-sm"
+                    type="file"
+                    id="formFileSm"
+                    multiple
+                    onChange={(event) => setAltImage(event.target.files[0])}
+                    name="altImage"
+                  />
                 </div>
 
                 <div className="col-4 col-md-2">
@@ -134,6 +138,7 @@ function Product_Add() {
                     id="price"
                     onChange={(event) => setPrice(event.target.value)}
                     value={price}
+                    name="price"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -146,6 +151,7 @@ function Product_Add() {
                     id="stock"
                     onChange={(event) => setStock(event.target.value)}
                     value={stock}
+                    name="stock"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -158,6 +164,7 @@ function Product_Add() {
                     id="size"
                     onChange={(event) => setSize(event.target.value)}
                     value={size}
+                    name="size"
                   />
                 </div>
                 <div className="col-4 col-md-2">
@@ -170,6 +177,7 @@ function Product_Add() {
                     id="abv"
                     onChange={(event) => setAbv(event.target.value)}
                     value={abv}
+                    name="abv"
                   />
                 </div>
 
@@ -183,6 +191,7 @@ function Product_Add() {
                     id="categoryId"
                     onChange={(event) => setCategoryId(event.target.value)}
                     value={categoryId}
+                    name="categorId"
                   />
                 </div>
 
@@ -190,17 +199,13 @@ function Product_Add() {
                   <label htmlFor="featured" className="form-label mt-3">
                     Featured
                   </label>
-                  <Switch
-                    size="small"
-                    defaultChecked={product.featured}
-                    onChange={() => setFeatured(!product.featured)}
-                  />
+                  <Switch size="small" checked={featured} onChange={() => setFeatured(!featured)} />
                 </div>
                 <div className="col-6 col-md-1 d-flex justify-content-between flex-column align-items-center">
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={product.active} onChange={handleSwitchChange} />
+                  <Switch size="small" checked={active} onChange={() => setActive(!active)} />
                 </div>
 
                 <div className="col-md-12 ">
@@ -210,10 +215,10 @@ function Product_Add() {
                   <textarea
                     className="form-control"
                     id="description"
-                    name="content"
                     rows="3"
                     onChange={(event) => setDescription(event.target.value)}
                     value={description}
+                    name="description"
                   ></textarea>
                 </div>
 

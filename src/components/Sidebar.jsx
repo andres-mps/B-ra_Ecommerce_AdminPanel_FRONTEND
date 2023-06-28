@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
+import { Tooltip } from "antd";
 
 function Sidebar() {
   return (
@@ -11,7 +12,9 @@ function Sidebar() {
 
         <div id="" className="link-container">
           <NavLink to="/" data-bs-toggle="collapse" className=" text-decoration-none text-white">
-            <i className="me-1 bi bi-house fs-5"></i>
+            <Tooltip placement="right" title={"Dashboard"} color={"#808080"}>
+              <i className="me-1 bi bi-house fs-5"></i>
+            </Tooltip>
             <span className="ms-2 d-none d-xl-inline mb-4">Dashboard</span>
           </NavLink>
         </div>
@@ -22,7 +25,9 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i className="bi bi-bag fs-5 me-2"></i>
+            <Tooltip placement="right" title={"Products"} color={"#808080"}>
+              <i className="bi bi-bag fs-5 me-2"></i>
+            </Tooltip>
             <span className="ms-2 d-none d-xl-inline mb-4">Products</span>
           </NavLink>
         </div>
@@ -32,7 +37,9 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i className="bi bi-cart3 fs-5 me-2"></i>
+            <Tooltip placement="right" title={"Orders"} color={"#808080"}>
+              <i className="bi bi-cart3 fs-5 me-2"></i>
+            </Tooltip>
             <span className="ms-2 d-none d-xl-inline mb-4">Orders</span>
           </NavLink>
         </div>
@@ -42,7 +49,9 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i className="me-2 fs-5 bi-list"></i>
+            <Tooltip placement="right" title={"Categories"} color={"#808080"}>
+              <i className="me-2 fs-5 bi-list"></i>
+            </Tooltip>
             <span className="ms-2 d-none d-xl-inline mb-4">Categories</span>
           </NavLink>
         </div>
@@ -52,7 +61,9 @@ function Sidebar() {
             data-bs-toggle="collapse"
             className=" text-decoration-none text-white"
           >
-            <i className="me-2 fs-5 bi-people"></i>
+            <Tooltip placement="right" title={"Admins"} color={"#808080"}>
+              <i className="me-2 fs-5 bi-people"></i>
+            </Tooltip>
             <span className="ms-2 d-none d-xl-inline mb-4">Admins</span>
           </NavLink>
         </div>

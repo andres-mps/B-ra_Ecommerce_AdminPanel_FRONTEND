@@ -32,7 +32,7 @@ function Admin_Add() {
 
     await axios({
       method: "POST",
-      url: `http://localhost:3000/admins/create`,
+      url: `${import.meta.env.VITE_APP_BACK}/admins/create`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -113,10 +113,7 @@ function Admin_Add() {
 
                 <div className="d-flex flex-row justify-content-end">
                   <div>
-                    <NavLink
-                      to="/categories"
-                      className="btn btn-outline-secondary me-2  mt-3"
-                    >
+                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

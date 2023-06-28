@@ -16,7 +16,11 @@ function Product_tr({ product }) {
       <td> {product.id}</td>
 
       <td className="thumbnail-container">
-        <img className="thumbnail-img" src={`http://localhost:3000/img/${product.image}`} alt="" />
+        <img
+          className="thumbnail-img"
+          src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.main}`}
+          alt=""
+        />
       </td>
       <td className="text-start">{product.name}</td>
       <td>{product.price}</td>
