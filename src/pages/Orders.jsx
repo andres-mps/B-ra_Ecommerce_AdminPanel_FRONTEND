@@ -14,7 +14,7 @@ function Orders() {
     async function getOrdersInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/orders`,
+        url: `${import.meta.env.VITE_APP_BACK}/orders`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },

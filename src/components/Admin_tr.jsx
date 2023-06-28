@@ -12,14 +12,8 @@ function Admin_tr({ admin }) {
 
       <td className="text-start">{admin.firstname}</td>
       <td className="text-start">{admin.lastname}</td>
-      <td>
-        {" "}
-        {format(new Date(admin.createdAt), "dd MMM yy", { locale: enUS })}
-      </td>
-      <td>
-        {" "}
-        {format(new Date(admin.updatedAt), "dd MMM yy", { locale: enUS })}
-      </td>
+      <td> {format(new Date(admin.createdAt), "dd MMM yy", { locale: enUS })}</td>
+      <td> {format(new Date(admin.updatedAt), "dd MMM yy", { locale: enUS })}</td>
       <td>
         <NavLink to={`/admins/edit/${admin.id}`}>
           <i className="bi bi-pencil-fill text-primary pencil"></i>

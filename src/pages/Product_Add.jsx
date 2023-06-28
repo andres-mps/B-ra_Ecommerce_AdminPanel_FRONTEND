@@ -46,7 +46,7 @@ function Product_Add() {
 
     await axios({
       method: "POST",
-      url: `http://localhost:3000/products`,
+      url: `${import.meta.env.VITE_APP_BACK}/products`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",

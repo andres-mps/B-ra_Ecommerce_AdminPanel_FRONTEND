@@ -14,7 +14,7 @@ function Categories() {
     async function getCategoryInfo() {
       const categories = await axios({
         method: "GET",
-        url: `http://localhost:3000/categories/admin/`,
+        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },

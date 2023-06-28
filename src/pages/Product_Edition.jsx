@@ -30,7 +30,7 @@ function Product_Edition() {
     async function getProductInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/products/${params.product}`,
+        url: `${import.meta.env.VITE_APP_BACK}/products/${params.product}`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -73,7 +73,7 @@ function Product_Edition() {
 
     await axios({
       method: "PATCH",
-      url: `http://localhost:3000/products/${product.id}`,
+      url: `${import.meta.env.VITE_APP_BACK}/products/${product.id}`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -88,7 +88,7 @@ function Product_Edition() {
     async function deleteProduct() {
       await axios({
         method: "DELETE",
-        url: `http://localhost:3000/products/${product.id}`,
+        url: `${import.meta.env.VITE_APP_BACK}/products/${product.id}`,
         headers: {
           // Authorization: `Bearer ${token}`,
         },

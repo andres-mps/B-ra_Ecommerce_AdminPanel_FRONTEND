@@ -15,7 +15,7 @@ function Products() {
     async function getProductInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/products/admin`,
+        url: `${import.meta.env.VITE_APP_BACK}/products/admin`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -25,7 +25,7 @@ function Products() {
 
       const categories = await axios({
         method: "GET",
-        url: `http://localhost:3000/categories`,
+        url: `${import.meta.env.VITE_APP_BACK}/categories`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },

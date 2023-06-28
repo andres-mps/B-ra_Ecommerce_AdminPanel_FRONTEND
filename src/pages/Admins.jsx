@@ -13,7 +13,7 @@ function Admins() {
     async function getAdminInfo() {
       const admins = await axios({
         method: "GET",
-        url: `http://localhost:3000/admins`,
+        url: `${import.meta.env.VITE_APP_BACK}/admins`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },

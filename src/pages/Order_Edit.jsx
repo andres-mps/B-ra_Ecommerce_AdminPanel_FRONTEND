@@ -23,7 +23,7 @@ function Order_edit() {
     async function getOrderInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/orders/order/${params.orderId}`,
+        url: `${import.meta.env.VITE_APP_BACK}/orders/order/${params.orderId}`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -58,7 +58,7 @@ function Order_edit() {
 
     await axios({
       method: "PATCH",
-      url: `http://localhost:3000/orders/${order.id}`,
+      url: `${import.meta.env.VITE_APP_BACK}/orders/${order.id}`,
       data: orderInfo,
       // headers: {
       //   //   Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ function Order_edit() {
     async function deleteOrder() {
       await axios({
         method: "DELETE",
-        url: `http://localhost:3000/orders/${order.id}`,
+        url: `${import.meta.env.VITE_APP_BACK}/orders/${order.id}`,
         headers: {
           // Authorization: `Bearer ${token}`,
         },

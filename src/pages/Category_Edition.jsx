@@ -24,7 +24,7 @@ function Category_Edition() {
     async function getCategoryInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/categories/admin/${params.category}`,
+        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${params.category}`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -50,7 +50,7 @@ function Category_Edition() {
 
     await axios({
       method: "PATCH",
-      url: `http://localhost:3000/categories/admin/update/${category.id}`,
+      url: `${import.meta.env.VITE_APP_BACK}/categories/admin/update/${category.id}`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -64,7 +64,7 @@ function Category_Edition() {
     async function deleteCategory() {
       await axios({
         method: "DELETE",
-        url: `http://localhost:3000/categories/admin/${category.id}`,
+        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${category.id}`,
         headers: {
           // Authorization: `Bearer ${token}`,
         },

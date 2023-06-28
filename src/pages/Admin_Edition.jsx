@@ -25,7 +25,7 @@ function Admin_Edition() {
     async function getAdminInfo() {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:3000/admins/${params.id}`,
+        url: `${import.meta.env.VITE_APP_BACK}/admins/${params.id}`,
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
@@ -54,7 +54,7 @@ function Admin_Edition() {
 
     await axios({
       method: "PATCH",
-      url: `http://localhost:3000/admins/update/${admin.id}`,
+      url: `${import.meta.env.VITE_APP_BACK}/admins/update/${admin.id}`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -68,7 +68,7 @@ function Admin_Edition() {
     async function deleteAdmin() {
       await axios({
         method: "DELETE",
-        url: `http://localhost:3000/admins/admin/${admin.id}`,
+        url: `${import.meta.env.VITE_APP_BACK}/admins/admin/${admin.id}`,
         headers: {
           // Authorization: `Bearer ${token}`,
         },
@@ -159,20 +159,13 @@ function Admin_Edition() {
                 </div>
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button
-                      onClick={handleDelete}
-                      type="submit"
-                      className="btn btn-danger mt-3"
-                    >
+                    <button onClick={handleDelete} type="submit" className="btn btn-danger mt-3">
                       Delete
                     </button>
                   </div>
 
                   <div>
-                    <NavLink
-                      to="/admins"
-                      className="btn btn-outline-secondary me-2  mt-3"
-                    >
+                    <NavLink to="/admins" className="btn btn-outline-secondary me-2  mt-3">
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

@@ -30,7 +30,7 @@ function Category_Add() {
 
     await axios({
       method: "POST",
-      url: `http://localhost:3000/categories/admin/create`,
+      url: `${import.meta.env.VITE_APP_BACK}/categories/admin/create`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
