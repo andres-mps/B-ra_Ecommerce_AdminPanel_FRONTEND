@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { Tooltip } from "antd";
+import { logOut } from "../redux/adminSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Sidebar() {
+  const dispatch = useDispatch();
   return (
     <div className="sidebar-container">
       <div className="admin-nav">
@@ -68,11 +71,27 @@ function Sidebar() {
           </NavLink>
         </div>
       </div>
-      <div className="return-link">
-        <NavLink to="/" data-bs-toggle="collapse" className="text-decoration-none text-white">
-          <i class="bi bi-arrow-90deg-left"></i>
-          <span className="ms-2 d-none d-xl-inline mb-4">Return to website</span>
-        </NavLink>
+      <div className="return-link text-center">
+        <div className="d-block">
+          <NavLink to="/" data-bs-toggle="collapse" className="text-decoration-none text-white">
+            <i className="bi bi-arrow-90deg-left"></i>
+            <span className="ms-2 d-none d-xl-inline mb-4">Return to website</span>
+          </NavLink>
+        </div>
+        <div className="d-block">
+          <NavLink
+            to="/login"
+            data-bs-toggle="collapse"
+            className="text-decoration-none text-white"
+          >
+            <button
+              className="ms-2 d-none d-xl-inline mb-4 btn btn-danger text-white rounded-0"
+              onClick={() => dispatch(logOut())}
+            >
+              Log out
+            </button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
