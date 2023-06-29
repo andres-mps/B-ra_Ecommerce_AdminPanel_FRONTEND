@@ -9,12 +9,24 @@ function Sidebar() {
   return (
     <div className="sidebar-container">
       <div className="admin-nav">
-        <NavLink to="/" data-bs-toggle="collapse" className=" text-decoration-none text-white">
-          <h3 className="To-Øl text-white text-center mt-2 mb-5">To Øl</h3>
+        <NavLink
+          to="/"
+          data-bs-toggle="collapse"
+          className=" text-decoration-none text-white"
+        >
+          <img
+            src="/src/assets/BRA_logo_white.webp"
+            alt="logo"
+            className="sidebar-logo"
+          />
         </NavLink>
 
         <div id="" className="link-container">
-          <NavLink to="/" data-bs-toggle="collapse" className=" text-decoration-none text-white">
+          <NavLink
+            to="/"
+            data-bs-toggle="collapse"
+            className=" text-decoration-none text-white"
+          >
             <Tooltip placement="right" title={"Dashboard"} color={"#808080"}>
               <i className="me-1 bi bi-house fs-5"></i>
             </Tooltip>
@@ -73,9 +85,15 @@ function Sidebar() {
       </div>
       <div className="return-link text-center">
         <div className="d-block">
-          <NavLink to="/" data-bs-toggle="collapse" className="text-decoration-none text-white">
+          <NavLink
+            to="/"
+            data-bs-toggle="collapse"
+            className="text-decoration-none text-white"
+          >
             <i className="bi bi-arrow-90deg-left"></i>
-            <span className="ms-2 d-none d-xl-inline mb-4">Return to website</span>
+            <span className="ms-2 d-none d-xl-inline mb-4">
+              Return to website
+            </span>
           </NavLink>
         </div>
         <div className="d-block">

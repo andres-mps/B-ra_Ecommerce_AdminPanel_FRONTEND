@@ -1,0 +1,40 @@
+.error-container {
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/src/assets/home_stylesList.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.error-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(20px) brightness(90%);
+  max-width: 500px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+.error-heading {
+  font-family: var(--font-heading);
+  font-size: calc(0.9 * 4vw);
+  color: white;
+}
+
+.error-sub-heading {
+  font-family: var(--font-heading);
+  font-size: calc(0.9 * 2vw);
+  color: white;
+}
+
+.error-return-link {
+  font-family: var(--font-heading);
+  font-size: calc(0.9 * 2vw);
+  text-decoration: none;
+  color: white;
+}

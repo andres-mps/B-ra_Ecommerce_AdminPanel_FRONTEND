@@ -41,13 +41,28 @@
   width: 100%;
 }
 
-@media (max-width: 792px) {
-  .To-Øl {
-    font-size: 1rem;
-    word-break: break-all;
+.sidebar-logo {
+  width: 80px;
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+}
+
+@media (max-width: 1199px) {
+  .sidebar-logo {
+    width: 70px;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
   }
+}
+
+@media (max-width: 792px) {
   .link-container i {
     font-size: 3rem;
     width: 100%;
+  }
+  .sidebar-logo {
+    width: 50px;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
   }
 }
