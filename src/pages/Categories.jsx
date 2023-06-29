@@ -8,7 +8,7 @@ import { Skeleton } from "antd";
 import { NavLink } from "react-router-dom";
 
 function Categories() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
 
   useEffect(() => {
     async function getCategoryInfo() {
@@ -58,7 +58,7 @@ function Categories() {
                   })}
               </tbody>
             </table>
-            {categories.length === 0 && <Skeleton active />}
+            {!categories && <Skeleton active />}
           </div>
         </div>
       </div>

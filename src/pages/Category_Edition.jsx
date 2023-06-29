@@ -6,10 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
-const onChange = (checked) => {
-  console.log(`switch to ${checked}`);
-};
-
 function Category_Edition() {
   const navigate = useNavigate();
   const [category, setCategory] = useState([]);
@@ -25,9 +21,6 @@ function Category_Edition() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${params.category}`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
       });
       setCategory(response.data);
       setId(response.data.id);
@@ -40,13 +33,11 @@ function Category_Edition() {
   async function handleUpdate(event) {
     event.preventDefault();
 
-    const formData = {
-      id,
-      name,
-      image,
-      active,
-    };
-    console.log(formData);
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("image", image);
+    formData.append("active", active);
 
     await axios({
       method: "PATCH",
@@ -60,18 +51,19 @@ function Category_Edition() {
     navigate(-1);
   }
 
-  const handleDelete = () => {
+  const handleDelete = (event) => {
+    event.preventDefault();
     async function deleteCategory() {
-      await axios({
+      const response = await axios({
         method: "DELETE",
         url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${category.id}`,
         headers: {
           // Authorization: `Bearer ${token}`,
         },
       });
+      navigate("/categories");
     }
     deleteCategory();
-    navigate("/categories");
   };
 
   const handleSwitchChange = (checked) => {
@@ -105,6 +97,7 @@ function Category_Edition() {
                     className="form-control"
                     id="id"
                     placeholder={category.id}
+                    name="id"
                   />
                 </div>
 
@@ -118,19 +111,21 @@ function Category_Edition() {
                     onChange={(event) => setName(event.target.value)}
                     value={name}
                     id="name"
+                    name="name"
                   />
                 </div>
 
                 <div className="col-md-4">
                   <label for="formFileMultiple" className="form-label">
-                    Upload product images:
+                    Upload category image:
                   </label>
                   <input
-                    className="form-control"
+                    className="form-control form-control-sm"
                     type="file"
-                    id="formFileMultiple"
+                    id="formFileSm"
                     multiple
                     onChange={(event) => setImage(event.target.files[0])}
+                    name="image"
                   />
                 </div>
 

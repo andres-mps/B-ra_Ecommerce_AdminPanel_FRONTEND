@@ -14,19 +14,17 @@ function Category_Add() {
   // inputs:
   const [id, setId] = useState(null);
   const [name, setName] = useState("");
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(false);
   const [image, setImage] = useState("");
 
-  async function handleUpdate(event) {
+  async function handleCreate(event) {
     event.preventDefault();
 
-    const formData = {
-      id,
-      name,
-      image,
-      active,
-    };
-    console.log(formData);
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("image", image);
+    formData.append("active", active);
 
     await axios({
       method: "POST",
@@ -58,7 +56,7 @@ function Category_Add() {
                 className="row g-3"
                 encType="multipart/form-data"
                 method="PATCH"
-                onSubmit={handleUpdate}
+                onSubmit={handleCreate}
               >
                 <div className="col-md-1">
                   <label htmlFor="id" className="form-label">
@@ -70,6 +68,7 @@ function Category_Add() {
                     type="id"
                     className="form-control"
                     id="id"
+                    name="id"
                     placeholder={category.id}
                   />
                 </div>
@@ -84,19 +83,21 @@ function Category_Add() {
                     onChange={(event) => setName(event.target.value)}
                     value={name}
                     id="name"
+                    name="name"
                   />
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="formFileMultiple" className="form-label">
-                    Upload product images:
+                  <label for="formFileMultiple" className="form-label">
+                    Upload category image:
                   </label>
                   <input
-                    className="form-control"
+                    className="form-control form-control-sm"
                     type="file"
-                    id="formFileMultiple"
+                    id="formFileSm"
                     multiple
                     onChange={(event) => setImage(event.target.files[0])}
+                    name="image"
                   />
                 </div>
 

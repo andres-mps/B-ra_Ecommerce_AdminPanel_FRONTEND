@@ -31,9 +31,6 @@ function Product_Edition() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/products/${params.product}`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
       });
       setProduct(response.data);
       setId(response.data.id);
@@ -48,8 +45,6 @@ function Product_Edition() {
       setDescription(response.data.description);
       setMainImage(response.data.image.main);
       setAltImage(response.data.image.alt);
-
-      // console.log(response.data);
     }
     getProductInfo();
   }, []);
@@ -83,8 +78,8 @@ function Product_Edition() {
     navigate(-1);
   }
 
-  const handleDelete = () => {
-    // e.preventDefault();
+  const handleDelete = (event) => {
+    event.preventDefault();
     async function deleteProduct() {
       await axios({
         method: "DELETE",
@@ -93,9 +88,9 @@ function Product_Edition() {
           // Authorization: `Bearer ${token}`,
         },
       });
+      navigate("/products");
     }
     deleteProduct();
-    navigate("/products");
   };
 
   return (

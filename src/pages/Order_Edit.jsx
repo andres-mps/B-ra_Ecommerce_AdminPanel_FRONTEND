@@ -36,8 +36,6 @@ function Order_edit() {
       setTaxes(response.data.taxes);
       setTotalAmount(response.data.totalAmount);
       setUserId(response.data.userId);
-
-      console.log(response.data);
     }
     getOrderInfo();
   }, []);
@@ -54,7 +52,6 @@ function Order_edit() {
       totalAmount,
       userId,
     };
-    console.log(orderInfo);
 
     await axios({
       method: "PATCH",
@@ -67,8 +64,8 @@ function Order_edit() {
     navigate(-1);
   }
 
-  const handleDelete = () => {
-    // e.preventDefault();
+  const handleDelete = (event) => {
+    event.preventDefault();
     async function deleteOrder() {
       await axios({
         method: "DELETE",
@@ -77,9 +74,9 @@ function Order_edit() {
           // Authorization: `Bearer ${token}`,
         },
       });
+      navigate("/orders");
     }
     deleteOrder();
-    navigate("/orders");
   };
 
   function statusIcons() {
