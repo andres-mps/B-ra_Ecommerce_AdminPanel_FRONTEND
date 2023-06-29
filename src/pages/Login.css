@@ -1,7 +1,21 @@
-#login-image {
-  height: 650px;
-  width: 100%;
-  object-fit: cover;
+.login-container {
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/src/assets/home_stylesList.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(20px) brightness(90%);
+  max-width: 400px;
+  border-radius: 5%;
 }
 .nav-login {
   font-family: var(--font-heading);
@@ -10,16 +24,6 @@
   text-decoration: none;
 }
 
-.login-container {
-  position: absolute;
-  width: 100%;
-  height: 6rem;
-  background-color: #f3f3f3;
-  bottom: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
 #login-form {
   display: flex;
   flex-direction: column;
@@ -28,7 +32,8 @@
 
 #login-heading {
   font-family: var(--font-heading);
-  font-size: calc(0.9 * 6vw);
+  font-size: calc(0.9 * 4vw);
+  color: white;
 }
 
 .input {
@@ -37,21 +42,34 @@
 }
 
 .login-input {
-  border: 1px solid black;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: transparent;
+  border-radius: 5px;
   height: 3rem;
   padding-left: 1rem;
   font-family: var(--font-heading);
+  outline: none;
+  color: white;
+}
+
+.login-input::placeholder {
+  color: white;
 }
 
 #login-button {
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-family: var(--font-heading);
-  border: 1px solid black;
+  border: none;
+  border-radius: 5px;
   height: 3rem;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+#login-button:hover {
+  background-color: #f3f3f3;
 }
 
 #login-link {

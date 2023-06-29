@@ -15,28 +15,33 @@ import Admins from "./pages/Admins";
 import Admin_Edition from "./pages/Admin_Edition";
 import Admin_Add from "./pages/Admin_Add";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Error404 from "./pages/Error404";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/add" element={<Product_Add />} />
-        <Route path="/categories/add" element={<Category_Add />} />
-        <Route path="/products/edit/:product" element={<Product_Edition />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/category-edition" element={<Category_Edition />} />
-        <Route
-          path="/categories/edit/:category"
-          element={<Category_Edition />}
-        />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/orders/edit/:orderId" element={<Order_Edit />} />
-        <Route path="/admins" element={<Admins />} />
-        <Route path="/admins/add" element={<Admin_Add />} />
-        <Route path="/admins/edit/:id" element={<Admin_Edition />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/add" element={<Product_Add />} />
+          <Route path="/categories/add" element={<Category_Add />} />
+          <Route path="/products/edit/:product" element={<Product_Edition />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/category-edition" element={<Category_Edition />} />
+          <Route
+            path="/categories/edit/:category"
+            element={<Category_Edition />}
+          />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/edit/:orderId" element={<Order_Edit />} />
+          <Route path="/admins" element={<Admins />} />
+          <Route path="/admins/add" element={<Admin_Add />} />
+          <Route path="/admins/edit/:id" element={<Admin_Edition />} />
+        </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </>
   );
