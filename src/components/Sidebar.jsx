@@ -71,6 +71,17 @@ function Sidebar() {
             <span className="ms-2 d-none d-xl-inline mb-4">Admins</span>
           </NavLink>
         </div>
+        <div id="" className="link-container">
+          <NavLink
+            data-bs-toggle="collapse"
+            className=" text-decoration-none text-white"
+          >
+            <Tooltip placement="right" title={"Users"} color={"#808080"}>
+              <i className="me-2 fs-5 bi-people"></i>
+            </Tooltip>
+            <span className="ms-2 d-none d-xl-inline mb-4">Users</span>
+          </NavLink>
+        </div>
       </div>
       <div className="return-link text-center">
         <div className="d-block">
