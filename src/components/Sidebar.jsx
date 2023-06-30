@@ -124,7 +124,11 @@ function Sidebar() {
           </NavLink>
         </div>
       </div>
-      <ToastContainer className="custom-toast-container" />;
+      <ToastContainer
+        className="custom-toast-container"
+        position="bottom-right"
+      />
+      ;
     </div>
   );
 }
