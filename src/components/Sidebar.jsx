@@ -74,7 +74,11 @@ function Sidebar() {
       </div>
       <div className="return-link text-center">
         <div className="d-block">
-          <NavLink to="/" data-bs-toggle="collapse" className="text-decoration-none text-white">
+          <NavLink
+            to="https://b-ra.vercel.app/home"
+            data-bs-toggle="collapse"
+            className="text-decoration-none text-white"
+          >
             <i className="bi bi-arrow-90deg-left"></i>
             <span className="ms-2 d-none d-xl-inline mb-4">Return to website</span>
           </NavLink>
