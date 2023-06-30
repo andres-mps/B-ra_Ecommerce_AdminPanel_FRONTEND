@@ -5,18 +5,20 @@ import Admin_tr from "../components/Admin_tr";
 import Sidebar from "../components/Sidebar";
 import { Skeleton } from "antd";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Admins() {
   const [admins, setAdmins] = useState([]);
+  const token = useSelector((state) => state.admin.token);
 
   useEffect(() => {
     async function getAdminInfo() {
       const admins = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/admins`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setAdmins(admins.data);
       console.log(admins.data);

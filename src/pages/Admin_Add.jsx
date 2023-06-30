@@ -5,11 +5,13 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Admin_Add() {
   const navigate = useNavigate();
   const [admin, setAdmins] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
   const [err, setErr] = useState(null);
 
   // inputs:
@@ -37,7 +39,7 @@ function Admin_Add() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {

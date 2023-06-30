@@ -5,11 +5,13 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Product_Add() {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -50,7 +52,7 @@ function Product_Add() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     navigate(-1);
@@ -147,7 +149,9 @@ function Product_Add() {
                   </label>
                   <input
                     type="number"
-                    className={`form-control ${product.stock === 0 ? "text-danger bg-light" : ""}`}
+                    className={`form-control ${
+                      product.stock === 0 ? "text-danger bg-light" : ""
+                    }`}
                     id="stock"
                     onChange={(event) => setStock(event.target.value)}
                     value={stock}
@@ -199,13 +203,21 @@ function Product_Add() {
                   <label htmlFor="featured" className="form-label mt-3">
                     Featured
                   </label>
-                  <Switch size="small" checked={featured} onChange={() => setFeatured(!featured)} />
+                  <Switch
+                    size="small"
+                    checked={featured}
+                    onChange={() => setFeatured(!featured)}
+                  />
                 </div>
                 <div className="col-6 col-md-1 d-flex justify-content-between flex-column align-items-center">
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={active} onChange={() => setActive(!active)} />
+                  <Switch
+                    size="small"
+                    checked={active}
+                    onChange={() => setActive(!active)}
+                  />
                 </div>
 
                 <div className="col-md-12 ">
@@ -224,7 +236,10 @@ function Product_Add() {
 
                 <div className="d-flex flex-row justify-content-end">
                   <div>
-                    <NavLink to="/products" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/products"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

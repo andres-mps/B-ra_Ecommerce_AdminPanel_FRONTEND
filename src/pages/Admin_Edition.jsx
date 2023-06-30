@@ -5,6 +5,7 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
@@ -14,6 +15,7 @@ function Admin_Edition() {
   const navigate = useNavigate();
   const [admin, setAdmin] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
 
   const [id, setId] = useState(null);
   const [firstname, setFirstname] = useState("");
@@ -28,9 +30,9 @@ function Admin_Edition() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/admins/${params.id}`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setAdmin(response.data);
       setId(response.data.id);
@@ -60,7 +62,7 @@ function Admin_Edition() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {
@@ -76,7 +78,7 @@ function Admin_Edition() {
       method: "DELETE",
       url: `${import.meta.env.VITE_APP_BACK}/admins/${admin.id}`,
       headers: {
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {

@@ -5,11 +5,13 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Category_Edition() {
   const navigate = useNavigate();
   const [category, setCategory] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
 
   const [id, setId] = useState(null);
   const [name, setName] = useState("");
@@ -50,7 +52,7 @@ function Category_Edition() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {
@@ -66,7 +68,7 @@ function Category_Edition() {
       method: "DELETE",
       url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${category.id}`,
       headers: {
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {

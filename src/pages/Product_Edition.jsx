@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import { Skeleton } from "antd";
+import { useSelector } from "react-redux";
 
 function Product_Edition() {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -72,7 +74,7 @@ function Product_Edition() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     navigate(-1);
@@ -85,7 +87,7 @@ function Product_Edition() {
         method: "DELETE",
         url: `${import.meta.env.VITE_APP_BACK}/products/${product.id}`,
         headers: {
-          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       navigate("/products");
@@ -171,14 +173,18 @@ function Product_Edition() {
                     {product.image && product.image.main && (
                       <img
                         className="product-img"
-                        src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.main}`}
+                        src={`${
+                          import.meta.env.VITE_APP_BACK_IMG + product.image.main
+                        }`}
                         alt=""
                       />
                     )}
                     {product.image && product.image.alt && (
                       <img
                         className="product-img"
-                        src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.alt}`}
+                        src={`${
+                          import.meta.env.VITE_APP_BACK_IMG + product.image.alt
+                        }`}
                         alt=""
                       />
                     )}
@@ -204,7 +210,9 @@ function Product_Edition() {
                   </label>
                   <input
                     type="number"
-                    className={`form-control ${product.stock === 0 ? "text-danger bg-light" : ""}`}
+                    className={`form-control ${
+                      product.stock === 0 ? "text-danger bg-light" : ""
+                    }`}
                     id="stock"
                     onChange={(event) => setStock(event.target.value)}
                     value={stock}
@@ -255,13 +263,21 @@ function Product_Edition() {
                   <label htmlFor="featured" className="form-label mt-3">
                     Featured
                   </label>
-                  <Switch size="small" checked={featured} onChange={() => setFeatured(!featured)} />
+                  <Switch
+                    size="small"
+                    checked={featured}
+                    onChange={() => setFeatured(!featured)}
+                  />
                 </div>
                 <div className="col-6 col-md-1 d-flex justify-content-between flex-column align-items-center">
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={active} onChange={() => setActive(!active)} />
+                  <Switch
+                    size="small"
+                    checked={active}
+                    onChange={() => setActive(!active)}
+                  />
                 </div>
 
                 <div className="col-md-12 ">
@@ -280,12 +296,18 @@ function Product_Edition() {
 
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button onClick={handleDelete} className="btn btn-danger mt-3">
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-danger mt-3"
+                    >
                       Delete
                     </button>
                   </div>
                   <div>
-                    <NavLink to="/products" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/products"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

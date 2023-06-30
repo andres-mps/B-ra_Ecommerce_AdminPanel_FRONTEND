@@ -5,12 +5,14 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Category_Add() {
   const navigate = useNavigate();
   const [category, setCategories] = useState([]);
   const params = useParams();
   const [err, setErr] = useState(null);
+  const token = useSelector((state) => state.admin.token);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -33,7 +35,7 @@ function Category_Add() {
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
-        //   Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.data.err === "err") {

@@ -4,11 +4,13 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Order_edit() {
   const navigate = useNavigate();
   const [order, setOrder] = useState([]);
   const params = useParams();
+  const token = useSelector((state) => state.admin.token);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -24,9 +26,9 @@ function Order_edit() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/orders/order/${params.orderId}`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setOrder(response.data);
       setId(response.data.id);
@@ -57,9 +59,9 @@ function Order_edit() {
       method: "PATCH",
       url: `${import.meta.env.VITE_APP_BACK}/orders/${order.id}`,
       data: orderInfo,
-      // headers: {
-      //   //   Authorization: `Bearer ${token}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     navigate(-1);
   }
@@ -71,7 +73,7 @@ function Order_edit() {
         method: "DELETE",
         url: `${import.meta.env.VITE_APP_BACK}/orders/${order.id}`,
         headers: {
-          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       navigate("/orders");
@@ -196,12 +198,18 @@ function Order_edit() {
                 </div>
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button onClick={handleDelete} className="btn btn-danger mt-3">
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-danger mt-3"
+                    >
                       Delete
                     </button>
                   </div>
                   <div>
-                    <NavLink to="/orders" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/orders"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">

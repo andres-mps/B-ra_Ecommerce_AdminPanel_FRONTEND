@@ -8,8 +8,11 @@ import Order_tr from "../components/Order_tr";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Skeleton } from "antd";
+import { useSelector } from "react-redux";
 
 function Dashboard() {
+  const token = useSelector((state) => state.admin.token);
+
   const notify = () =>
     toast.warn("Sorry, this feature is still under development", {
       position: "top-right",
@@ -28,9 +31,9 @@ function Dashboard() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/orders`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       response.data.length = 10;
       setOrders(response.data);
@@ -58,18 +61,26 @@ function Dashboard() {
                       <div>
                         <div>
                           <p className="card-title d-inline fs-6 nowrap">
-                            Monthly sales <small className="opacity-50 fs-7">(USD)</small>
+                            Monthly sales{" "}
+                            <small className="opacity-50 fs-7">(USD)</small>
                           </p>
                         </div>
-                        <p className="card-text fs-5 fw-semibold  d-inline">153.603</p>{" "}
+                        <p className="card-text fs-5 fw-semibold  d-inline">
+                          153.603
+                        </p>{" "}
                         <span>
-                          <i className="bi bi-arrow-up text-success fw-normal">21%</i>
+                          <i className="bi bi-arrow-up text-success fw-normal">
+                            21%
+                          </i>
                         </span>
                       </div>
                     </div>
                     <hr />
                     <div>
-                      <NavLink onClick={notify} className="text-decoration-none">
+                      <NavLink
+                        onClick={notify}
+                        className="text-decoration-none"
+                      >
                         View all
                       </NavLink>
                     </div>
@@ -84,18 +95,26 @@ function Dashboard() {
                       <div>
                         <div>
                           <p className="card-title d-inline fs-6 nowrap">
-                            Number of orders <small className="opacity-50 fs-6">(QTY)</small>
+                            Number of orders{" "}
+                            <small className="opacity-50 fs-6">(QTY)</small>
                           </p>
                         </div>
-                        <p className="card-text fs-5 fw-semibold  d-inline">98.332</p>{" "}
+                        <p className="card-text fs-5 fw-semibold  d-inline">
+                          98.332
+                        </p>{" "}
                         <span>
-                          <i className="bi bi-arrow-up text-success fw-normal">15%</i>
+                          <i className="bi bi-arrow-up text-success fw-normal">
+                            15%
+                          </i>
                         </span>
                       </div>
                     </div>
                     <hr />
                     <div>
-                      <NavLink onClick={notify} className="text-decoration-none">
+                      <NavLink
+                        onClick={notify}
+                        className="text-decoration-none"
+                      >
                         View all
                       </NavLink>
                     </div>
@@ -110,18 +129,26 @@ function Dashboard() {
                       <div>
                         <div>
                           <p className="card-title d-inline fs-6 nowrap">
-                            Convertion rate <small className="opacity-50 fs-6">(%)</small>
+                            Convertion rate{" "}
+                            <small className="opacity-50 fs-6">(%)</small>
                           </p>
                         </div>
-                        <p className="card-text fs-5 fw-semibold  d-inline">1.3%</p>{" "}
+                        <p className="card-text fs-5 fw-semibold  d-inline">
+                          1.3%
+                        </p>{" "}
                         <span>
-                          <i className="bi bi-arrow-up text-success fw-normal">0.1 p.p.</i>
+                          <i className="bi bi-arrow-up text-success fw-normal">
+                            0.1 p.p.
+                          </i>
                         </span>
                       </div>
                     </div>
                     <hr />
                     <div>
-                      <NavLink onClick={notify} className="text-decoration-none">
+                      <NavLink
+                        onClick={notify}
+                        className="text-decoration-none"
+                      >
                         View all
                       </NavLink>
                     </div>

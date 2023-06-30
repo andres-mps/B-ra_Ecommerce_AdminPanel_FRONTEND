@@ -6,18 +6,20 @@ import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
 import Order_tr from "../components/Order_tr";
 import { Skeleton } from "antd";
+import { useSelector } from "react-redux";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
+  const token = useSelector((state) => state.admin.token);
 
   useEffect(() => {
     async function getOrdersInfo() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_APP_BACK}/orders`,
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setOrders(response.data);
       // console.log(response.data);
