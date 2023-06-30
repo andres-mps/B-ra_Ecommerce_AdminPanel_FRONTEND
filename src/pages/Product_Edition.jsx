@@ -23,8 +23,8 @@ function Product_Edition() {
   const [featured, setFeatured] = useState(null);
   const [active, setActive] = useState(null);
   const [description, setDescription] = useState("");
-  const [mainImage, setMainImage] = useState("");
-  const [altImage, setAltImage] = useState("");
+  const [mainImage, setMainImage] = useState(null);
+  const [altImage, setAltImage] = useState(null);
 
   useEffect(() => {
     async function getProductInfo() {
@@ -168,20 +168,20 @@ function Product_Edition() {
 
                 <div className="col-md-3 ">
                   <div className="product-img-container d-flex flex-row">
-                    {/* {product.image.main && (
+                    {product.image && product.image.main && (
                       <img
                         className="product-img"
                         src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.main}`}
                         alt=""
                       />
                     )}
-                    {product.image.alt && (
+                    {product.image && product.image.alt && (
                       <img
                         className="product-img"
                         src={`${import.meta.env.VITE_APP_BACK_IMG + product.image.alt}`}
                         alt=""
                       />
-                    )} */}
+                    )}
                   </div>
                 </div>
 
