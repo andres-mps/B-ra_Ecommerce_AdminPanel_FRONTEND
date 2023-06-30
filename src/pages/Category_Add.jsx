@@ -10,6 +10,7 @@ function Category_Add() {
   const navigate = useNavigate();
   const [category, setCategories] = useState([]);
   const params = useParams();
+  const [err, setErr] = useState(null);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -26,7 +27,7 @@ function Category_Add() {
     formData.append("image", image);
     formData.append("active", active);
 
-    await axios({
+    const response = await axios({
       method: "POST",
       url: `${import.meta.env.VITE_APP_BACK}/categories/admin/create`,
       data: formData,
@@ -35,6 +36,10 @@ function Category_Add() {
         //   Authorization: `Bearer ${token}`,
       },
     });
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
     navigate(-1);
   }
 
@@ -105,7 +110,9 @@ function Category_Add() {
                   <div className="product-img-container">
                     <img
                       className="product-img"
-                      src={`${import.meta.env.VITE_APP_BACK_IMG + category.image}`}
+                      src={`${
+                        import.meta.env.VITE_APP_BACK_IMG + category.image
+                      }`}
                       alt=""
                     />
                   </div>
@@ -114,12 +121,19 @@ function Category_Add() {
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={category.active} onChange={handleSwitchChange} />
+                  <Switch
+                    size="small"
+                    checked={category.active}
+                    onChange={handleSwitchChange}
+                  />
                 </div>
 
                 <div className="d-flex flex-row justify-content-end">
                   <div>
-                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/categories"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
@@ -128,6 +142,11 @@ function Category_Add() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>
