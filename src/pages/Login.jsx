@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { setToken } from "../redux/adminSlice";
 import axios from "axios";
-import { useNavigate, NavLink, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import queryString from "query-string";
 import "./Login.css";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const direccionAnterior =
-    location.state !== null ? location.state.direccionAnterior : null;
 
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [err, setErr] = useState(null);
+
+  useEffect(() => {
+    const parsedQueryString = queryString.parse(window.location.search);
+    if (parsedQueryString.user && parsedQueryString.password) {
+      setEmailValue(parsedQueryString.user);
+      setPasswordValue(parsedQueryString.password);
+    }
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
