@@ -9,7 +9,16 @@ import BRA_logo_white from "../assets/logos/BRA_logo_white.webp";
 function Sidebar() {
   const dispatch = useDispatch();
   const handleUsersClick = () => {
-    toast.info("La funcionalidad Users está fuera del alcance del proyecto");
+    toast.warn("Sorry, this feature is still under development", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <div className="sidebar-container">
@@ -124,11 +133,7 @@ function Sidebar() {
           </NavLink>
         </div>
       </div>
-      <ToastContainer
-        className="custom-toast-container"
-        position="bottom-right"
-      />
-      ;
+      <ToastContainer />;
     </div>
   );
 }
