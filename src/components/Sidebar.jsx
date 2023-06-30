@@ -9,7 +9,7 @@ import BRA_logo_white from "../assets/logos/BRA_logo_white.webp";
 function Sidebar() {
   const dispatch = useDispatch();
   const handleUsersClick = () => {
-    toast.info("La funcionalidad Users está fuera del alcance del proyecto");
+    toast.warn("Sorry, this feature is still under development");
   };
   return (
     <div className="sidebar-container">
