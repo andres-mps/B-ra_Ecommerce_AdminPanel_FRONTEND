@@ -10,17 +10,17 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [emailValue, setEmailValue] = useState("admin@gmail.com");
+  const [passwordValue, setPasswordValue] = useState("1234");
   const [err, setErr] = useState(null);
 
-  useEffect(() => {
-    const parsedQueryString = queryString.parse(window.location.search);
-    if (parsedQueryString.user && parsedQueryString.password) {
-      setEmailValue(parsedQueryString.user);
-      setPasswordValue(parsedQueryString.password);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const parsedQueryString = queryString.parse(window.location.search);
+  //   if (parsedQueryString.user && parsedQueryString.password) {
+  //     setEmailValue(parsedQueryString.user);
+  //     setPasswordValue(parsedQueryString.password);
+  //   }
+  // }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
