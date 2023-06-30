@@ -15,12 +15,15 @@ function Category_Edition() {
   const [name, setName] = useState("");
   const [active, setActive] = useState(null);
   const [image, setImage] = useState("");
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     async function getCategoryInfo() {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${params.category}`,
+        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${
+          params.category
+        }`,
       });
       setCategory(response.data);
       setId(response.data.id);
@@ -39,32 +42,39 @@ function Category_Edition() {
     formData.append("image", image);
     formData.append("active", active);
 
-    await axios({
+    const response = await axios({
       method: "PATCH",
-      url: `${import.meta.env.VITE_APP_BACK}/categories/admin/update/${category.id}`,
+      url: `${import.meta.env.VITE_APP_BACK}/categories/admin/update/${
+        category.id
+      }`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
         //   Authorization: `Bearer ${token}`,
       },
     });
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
     navigate(-1);
   }
 
-  const handleDelete = (event) => {
+  async function handleDelete(event) {
     event.preventDefault();
-    async function deleteCategory() {
-      const response = await axios({
-        method: "DELETE",
-        url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${category.id}`,
-        headers: {
-          // Authorization: `Bearer ${token}`,
-        },
-      });
-      navigate("/categories");
+    const response = await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_APP_BACK}/categories/admin/${category.id}`,
+      headers: {
+        // Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
     }
-    deleteCategory();
-  };
+    setErr(null);
+    navigate("/categories");
+  }
 
   const handleSwitchChange = (checked) => {
     setActive(checked);
@@ -133,7 +143,9 @@ function Category_Edition() {
                   <div className="product-img-container">
                     <img
                       className="product-img"
-                      src={`${import.meta.env.VITE_APP_BACK_IMG + category.image}`}
+                      src={`${
+                        import.meta.env.VITE_APP_BACK_IMG + category.image
+                      }`}
                       alt=""
                     />
                   </div>
@@ -143,17 +155,27 @@ function Category_Edition() {
                   <label htmlFor="id" className="form-label mt-3">
                     Active
                   </label>
-                  <Switch size="small" checked={active} onChange={handleSwitchChange} />
+                  <Switch
+                    size="small"
+                    checked={active}
+                    onChange={handleSwitchChange}
+                  />
                 </div>
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button onClick={handleDelete} type="submit" className="btn btn-danger mt-3">
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-danger mt-3"
+                    >
                       Delete
                     </button>
                   </div>
 
                   <div>
-                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/categories"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
@@ -162,6 +184,11 @@ function Category_Edition() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -21,6 +21,8 @@ function Admin_Edition() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [err, setErr] = useState(null);
+
   useEffect(() => {
     async function getAdminInfo() {
       const response = await axios({
@@ -50,9 +52,9 @@ function Admin_Edition() {
       email,
       password,
     };
-    console.log(formData);
+    //console.log(formData);
 
-    await axios({
+    const response = await axios({
       method: "PATCH",
       url: `${import.meta.env.VITE_APP_BACK}/admins/update/${admin.id}`,
       data: formData,
@@ -61,22 +63,28 @@ function Admin_Edition() {
         //   Authorization: `Bearer ${token}`,
       },
     });
-    navigate(-1);
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
+    return navigate(-1);
   }
 
-  const handleDelete = () => {
-    async function deleteAdmin() {
-      await axios({
-        method: "DELETE",
-        url: `${import.meta.env.VITE_APP_BACK}/admins/admin/${admin.id}`,
-        headers: {
-          // Authorization: `Bearer ${token}`,
-        },
-      });
+  async function handleDelete(event) {
+    event.preventDefault();
+    const response = await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_APP_BACK}/admins/${admin.id}`,
+      headers: {
+        // Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
     }
-    deleteAdmin();
-    navigate("/admins");
-  };
+    setErr(null);
+    return navigate("/admins");
+  }
 
   return (
     admin && (
@@ -159,13 +167,19 @@ function Admin_Edition() {
                 </div>
                 <div className="d-flex flex-row justify-content-between">
                   <div>
-                    <button onClick={handleDelete} type="submit" className="btn btn-danger mt-3">
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-danger mt-3"
+                    >
                       Delete
                     </button>
                   </div>
 
                   <div>
-                    <NavLink to="/admins" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/admins"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
@@ -174,6 +188,11 @@ function Admin_Edition() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>

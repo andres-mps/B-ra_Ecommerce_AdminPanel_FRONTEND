@@ -32,9 +32,9 @@ function Login() {
         password: passwordValue,
       },
     });
-    console.log(response.data);
-    if (response.data === "Credenciales incorrectas") {
-      return setErr(response.data);
+    //console.log(response.data);
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
     }
     dispatch(setToken(response.data));
     return navigate("/");

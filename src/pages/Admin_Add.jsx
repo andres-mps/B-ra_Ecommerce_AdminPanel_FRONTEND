@@ -10,6 +10,7 @@ function Admin_Add() {
   const navigate = useNavigate();
   const [admin, setAdmins] = useState([]);
   const params = useParams();
+  const [err, setErr] = useState(null);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -30,7 +31,7 @@ function Admin_Add() {
     };
     console.log(formData);
 
-    await axios({
+    const response = await axios({
       method: "POST",
       url: `${import.meta.env.VITE_APP_BACK}/admins/create`,
       data: formData,
@@ -39,7 +40,11 @@ function Admin_Add() {
         //   Authorization: `Bearer ${token}`,
       },
     });
-    navigate(-1);
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
+    return navigate(-1);
   }
 
   return (
@@ -113,7 +118,10 @@ function Admin_Add() {
 
                 <div className="d-flex flex-row justify-content-end">
                   <div>
-                    <NavLink to="/categories" className="btn btn-outline-secondary me-2  mt-3">
+                    <NavLink
+                      to="/categories"
+                      className="btn btn-outline-secondary me-2  mt-3"
+                    >
                       Cancel
                     </NavLink>
                     <button type="submit" className="btn btn-success mt-3">
@@ -122,6 +130,11 @@ function Admin_Add() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>
