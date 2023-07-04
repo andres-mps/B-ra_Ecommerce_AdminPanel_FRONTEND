@@ -12,6 +12,7 @@ function Product_Add() {
   const [product, setProduct] = useState([]);
   const params = useParams();
   const token = useSelector((state) => state.admin.token);
+  const [err, setErr] = useState(null);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -46,7 +47,7 @@ function Product_Add() {
 
     console.log(formData);
 
-    await axios({
+    const response = await axios({
       method: "POST",
       url: `${import.meta.env.VITE_APP_BACK}/products`,
       data: formData,
@@ -55,7 +56,11 @@ function Product_Add() {
         Authorization: `Bearer ${token}`,
       },
     });
-    navigate(-1);
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
+    return navigate(-1);
   }
 
   return (
@@ -248,6 +253,11 @@ function Product_Add() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>

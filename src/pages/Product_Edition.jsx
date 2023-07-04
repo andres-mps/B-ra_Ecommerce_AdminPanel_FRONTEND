@@ -13,6 +13,7 @@ function Product_Edition() {
   const [product, setProduct] = useState([]);
   const params = useParams();
   const token = useSelector((state) => state.admin.token);
+  const [err, setErr] = useState(null);
 
   // inputs:
   const [id, setId] = useState(null);
@@ -68,7 +69,7 @@ function Product_Edition() {
     formData.append("featured", featured);
     formData.append("active", active);
 
-    await axios({
+    const response = await axios({
       method: "PATCH",
       url: `${import.meta.env.VITE_APP_BACK}/products/${product.id}`,
       data: formData,
@@ -77,20 +78,28 @@ function Product_Edition() {
         Authorization: `Bearer ${token}`,
       },
     });
-    navigate(-1);
+    if (response.data.err === "err") {
+      return setErr(response.data.message);
+    }
+    setErr(null);
+    return navigate(-1);
   }
 
   const handleDelete = (event) => {
     event.preventDefault();
     async function deleteProduct() {
-      await axios({
+      const response = await axios({
         method: "DELETE",
         url: `${import.meta.env.VITE_APP_BACK}/products/${product.id}`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      navigate("/products");
+      if (response.data.err === "err") {
+        return setErr(response.data.message);
+      }
+      setErr(null);
+      return navigate("/products");
     }
     deleteProduct();
   };
@@ -316,6 +325,11 @@ function Product_Edition() {
                   </div>
                 </div>
               </form>
+              {err && (
+                <div class="text-danger mt-2 login-alert" role="alert">
+                  {err}
+                </div>
+              )}
             </div>
           </div>
         </div>
