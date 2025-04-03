@@ -290,7 +290,7 @@ function Product_Edition() {
                 </div>
 
                 <div className="col-md-12 ">
-                  <label htmlFor="description" className="form-label mt-3">
+                  <label htmlFor="description" className="form-label mt-3"> 
                     Description
                   </label>
                   <textarea
